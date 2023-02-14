@@ -40,7 +40,7 @@ public class MainClass {
     private static List<Person> leerPersonas(String fname) throws Exception{
         List<Person> listaPersonas = new ArrayList<>();
 
-        String filePath = "C:\\Projects\\java\\formacion\\FormacionJava\\block1-process-file-and-streams\\src\\main\\resources";
+        String filePath = "C:\\Projects\\java\\formacion\\FormacionJava\\block1-process-file-and-streams\\src\\main\\resources\\";
         filePath = filePath.concat(fname);
 
         if(!archivoExiste(filePath)){
@@ -53,7 +53,7 @@ public class MainClass {
         for(String s : listaTemp){
             String[] temp = s.split(":");
             if(temp.length != 3){
-                throw new Exception("Linea mal formateada en la linea " + i);
+                throw new InvalidLineFormatException("Linea mal formateada en la linea " + i);
             }
             listaPersonas.add(new Person.personBuilder(temp).build());
             i++;

@@ -40,8 +40,9 @@ public class MainClass {
     private static List<Person> leerPersonas(String fname) throws Exception{
         List<Person> listaPersonas = new ArrayList<>();
 
-        String filePath = "C:\\Projects\\java\\formacion\\FormacionJava\\block1-process-file-and-streams\\src\\main\\resources\\";
-        filePath = filePath.concat(fname);
+        //String filePath = "C:\\Projects\\java\\formacion\\FormacionJava\\block1-process-file-and-streams\\src\\main\\resources\\";
+        String filePath = "src/main/resources/ejemplo.csv";
+        //filePath = filePath.concat(fname);
 
         if(!archivoExiste(filePath)){
             throw new Exception("El archivo no existe");
@@ -52,6 +53,8 @@ public class MainClass {
         int i = 1;
         for(String s : listaTemp){
             String[] temp = s.split(":");
+            System.out.println(s);
+            System.out.println("Longitud: " + temp.length);
             if(temp.length != 3){
                 throw new InvalidLineFormatException("Linea mal formateada en la linea " + i);
             }

@@ -55,7 +55,12 @@ public class Person {
             if(parametros[2].isEmpty()){
                 this.age = 0;
             }else{
-                this.age = Integer.parseInt(parametros[2]);
+                try{
+                    this.age = Integer.parseInt(parametros[2]);
+                }catch (NumberFormatException e){
+                    //Si la edad introducida no es parseable le asigno 0
+                    this.age = 0;
+                }
             }
         }
         public Person build(){

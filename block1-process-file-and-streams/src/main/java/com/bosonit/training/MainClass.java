@@ -52,11 +52,30 @@ public class MainClass {
 
         int i = 1;
         for(String s : listaTemp){
-            String[] temp = s.split(":");
+            String[] temp = s.split(":", -1);
             System.out.println(s);
             System.out.println("Longitud: " + temp.length);
             if(temp.length != 3){
-                throw new InvalidLineFormatException("Linea mal formateada en la linea " + i);
+                String nombre;
+                switch (temp.length){
+                    case 1:
+                        nombre = temp[0];
+                        temp = new String[3];
+                        temp[0] = nombre;
+                        temp[1] = "unknown";
+                        temp[2] = "0";
+                        break;
+                    case 2:
+                        nombre = temp[0];
+                        String town = temp[1];
+                        temp = new String[3];
+                        temp[0] = nombre;
+                        temp[1] = town;
+                        temp[2] = "0";
+                        break;
+                    default:
+                        throw new InvalidLineFormatException("Linea mal formateada en la linea " + i);
+                }
             }
             listaPersonas.add(new Person.personBuilder(temp).build());
             i++;

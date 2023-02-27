@@ -9,7 +9,7 @@ public class ClaseSecundaria implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("Hola desde la clase secundaria");
         for(String argu : args){
-            System.out.println("Argumento: " + argu);
+            System.out.println("Argumento Secun: " + argu);
         }
     }
 }

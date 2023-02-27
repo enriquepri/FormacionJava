@@ -25,6 +25,9 @@ public class Block5CommandLineRunnerApplication {
 		return p ->
 		{
 			System.out.println("Linea a ejecutar cuando arranque");
+			for (String argu : p){
+				System.out.println("Argumento Bean: " + argu);
+			}
 		};
 	}
 

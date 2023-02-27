@@ -2,7 +2,7 @@
   <configuration default="false" name="MainClass" type="Application" factoryName="Application" nameIsGenerated="true">
     <option name="MAIN_CLASS_NAME" value="com.bosonit.training.MainClass" />
     <module name="block1-process-file-and-streams" />
-    <option name="PROGRAM_PARAMETERS" value="pruebas.csv" />
+    <option name="PROGRAM_PARAMETERS" value="pruebas" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="com.bosonit.training.*" />

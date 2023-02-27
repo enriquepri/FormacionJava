@@ -11,15 +11,17 @@ import java.util.stream.Stream;
 
 public class MainClass {
     public static void main(String[] args) {
-        if(args.length != 1){
+        /*if(args.length != 1){
             System.out.println("Error en los argumentos");
             return;
-        }
+        }*/
+
+        System.out.println(args.length);
 
         List<Person> listaPersonas = new ArrayList<>();
 
         try {
-            listaPersonas = leerPersonas(args[0]);
+            listaPersonas = leerPersonas("temp");
         } catch (Exception e) {
             //throw new RuntimeException(e);
             e.printStackTrace();

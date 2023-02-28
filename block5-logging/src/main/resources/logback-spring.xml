@@ -23,7 +23,8 @@
 
     <!--  En el fichero backlog.log se escribirán los mensajes de ERROR, por tanto, Error se acepta y el resto se desecha -->
     <appender name="FileLog" class="ch.qos.logback.core.FileAppender">
-        <file>./logs/backlog.log</file>  <!-- Se especifica el fichero donde se va a guardar -->
+        <!-- Se especifica el fichero donde se va a guardar -->
+        <file>./log/backlog.log</file>
         <!-- Usamos un fitro para aceptar solo los logs de nivel ERROR y rechazar el resto. -->
 
         <filter class="ch.qos.logback.classic.filter.LevelFilter">
@@ -31,6 +32,22 @@
             <onMatch>ACCEPT</onMatch> <!-- Acción en caso de coincidencia -->
             <onMismatch>DENY</onMismatch> <!-- Acción en caso de no coincidencia -->
         </filter>
+
+        <!-- De nuevo, definimos el patrón de salida del log -->
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} => %msg%n</Pattern>
+        </encoder>
+
+        <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>backlog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>1KB</maxFileSize>
+            <maxHistory>5</maxHistory>
+        </rollingPolicy>-->
+    </appender>
+
+    <appender name="FileLogExtra" class="ch.qos.logback.core.FileAppender">
+        <!-- Se especifica el fichero donde se va a guardar -->
+        <file>./log/logextra.log</file>
 
         <!-- De nuevo, definimos el patrón de salida del log -->
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -47,4 +64,8 @@
         <appender-ref ref="Console" />
         <appender-ref ref="FileLog" />
     </root>
+
+    <logger name="com.bosonit.formacion.block5logging" level="TRACE">
+        <appender-ref ref="FileLogExtra" />
+    </logger>
 </configuration>

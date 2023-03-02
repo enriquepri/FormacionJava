@@ -38,11 +38,11 @@
             <Pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{50} => %msg%n</Pattern>
         </encoder>
 
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>backlog-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>1KB</maxFileSize>
             <maxHistory>5</maxHistory>
-        </rollingPolicy>-->
+        </rollingPolicy>
     </appender>
 
     <appender name="FileLogExtra" class="ch.qos.logback.core.FileAppender">

@@ -3,10 +3,7 @@ package com.bosonit.formacion.block6personcontrollers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/controlador1")
@@ -29,5 +26,11 @@ public class Controlador1 {
         Persona person = new Persona(nombre, ciudad, edad);
         coleccion.person = person;
         return ResponseEntity.ok(person);
+    }
+
+    @PostMapping("addCiudad")
+    public ResponseEntity<String> addCiudad(@RequestBody Ciudad ciudad){
+        coleccion.listaCiudades.add(ciudad);
+        return ResponseEntity.ok(HttpStatus.OK + ": Ciudad añadida");
     }
 }

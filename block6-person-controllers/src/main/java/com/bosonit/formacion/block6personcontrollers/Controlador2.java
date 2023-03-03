@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/controlador2")
 public class Controlador2 {
@@ -19,5 +21,10 @@ public class Controlador2 {
             return ResponseEntity.ok(person);
         }
         return ResponseEntity.status(400).body(null);
+    }
+
+    @GetMapping("/getCiudad")
+    public ResponseEntity<List<Ciudad>> getCiudad(){
+        return ResponseEntity.ok(coleccion.listaCiudades);
     }
 }

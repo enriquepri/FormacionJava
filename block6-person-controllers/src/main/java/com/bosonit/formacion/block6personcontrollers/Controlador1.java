@@ -5,11 +5,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/controlador1")
 public class Controlador1 {
     @Autowired
-    CollectionBeans coleccion;
+    Persona person;
+    @Autowired
+    List<Ciudad> listaCiudades;
 
     @GetMapping("/addPersonaPrueba")
     public ResponseEntity<String> addPersonaPrueba(@RequestHeader("nombre") String nombre,
@@ -23,14 +27,14 @@ public class Controlador1 {
     public ResponseEntity<Persona> addPersona(@RequestHeader("nombre") String nombre,
                                              @RequestHeader("ciudad") String ciudad,
                                              @RequestHeader("edad") int edad){
-        Persona person = new Persona(nombre, ciudad, edad);
-        coleccion.person = person;
+        Persona persona = new Persona(nombre, ciudad, edad);
+        person = persona;
         return ResponseEntity.ok(person);
     }
 
     @PostMapping("addCiudad")
     public ResponseEntity<String> addCiudad(@RequestBody Ciudad ciudad){
-        coleccion.listaCiudades.add(ciudad);
+        listaCiudades.add(ciudad);
         return ResponseEntity.ok(HttpStatus.OK + ": Ciudad añadida");
     }
 }

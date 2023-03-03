@@ -12,19 +12,19 @@ import java.util.List;
 @RequestMapping("/controlador2")
 public class Controlador2 {
     @Autowired
-    CollectionBeans coleccion;
+    Persona person;
+    @Autowired
+    List<Ciudad> listaCiudades;
 
     @GetMapping("/getPersona")
     public ResponseEntity<Persona> getPersona(){
-        if(coleccion.person != null){
-            Persona person = new Persona(coleccion.person.nombre, coleccion.person.ciudad, coleccion.person.edad * 2);
-            return ResponseEntity.ok(person);
-        }
-        return ResponseEntity.status(400).body(null);
+        Persona persona = new Persona(person.nombre, person.ciudad, person.edad * 2);
+        return ResponseEntity.ok(person);
+
     }
 
     @GetMapping("/getCiudad")
     public ResponseEntity<List<Ciudad>> getCiudad(){
-        return ResponseEntity.ok(coleccion.listaCiudades);
+        return ResponseEntity.ok(listaCiudades);
     }
 }

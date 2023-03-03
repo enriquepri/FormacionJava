@@ -7,23 +7,22 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @SpringBootApplication
 public class Block6PersonControllersApplication {
-
-	@Autowired
-	CollectionBeans coleccion;
 
 	public static void main(String[] args) {
 		SpringApplication.run(Block6PersonControllersApplication.class, args);
 	}
 
 	@Bean
-	CommandLineRunner inicializarLista(){
-		return p ->
-		{
-			coleccion.listaCiudades = new ArrayList<>();
-			System.out.println("Lista de ciudades iniciada");
-		};
+	List<Ciudad> getListaCiudades(){
+		return new ArrayList<>();
+	}
+
+	@Bean
+	Persona getPersona(){
+		return new Persona();
 	}
 }

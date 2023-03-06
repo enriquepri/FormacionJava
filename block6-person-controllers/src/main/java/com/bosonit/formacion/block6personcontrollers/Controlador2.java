@@ -1,6 +1,7 @@
 package com.bosonit.formacion.block6personcontrollers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,13 +13,14 @@ import java.util.List;
 @RequestMapping("/controlador2")
 public class Controlador2 {
     @Autowired
+    @Qualifier("miPersona")
     Persona person;
     @Autowired
     List<Ciudad> listaCiudades;
 
     @GetMapping("/getPersona")
     public ResponseEntity<Persona> getPersona(){
-        Persona persona = new Persona(person.nombre, person.ciudad, person.edad * 2);
+        //Persona persona = new Persona(person.nombre, person.ciudad, person.edad * 2);
         return ResponseEntity.ok(person);
 
     }

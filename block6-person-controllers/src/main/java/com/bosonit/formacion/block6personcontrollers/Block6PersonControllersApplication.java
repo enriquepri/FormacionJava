@@ -1,6 +1,7 @@
 package com.bosonit.formacion.block6personcontrollers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,11 +19,13 @@ public class Block6PersonControllersApplication {
 
 	@Bean
 	List<Ciudad> getListaCiudades(){
-		return new ArrayList<>();
+		return new ArrayList<Ciudad>();
 	}
 
 	@Bean
+	@Qualifier("miPersona")
 	Persona getPersona(){
-		return new Persona();
+		Persona person = new Persona("Default", "Default", 0);
+		return person;
 	}
 }

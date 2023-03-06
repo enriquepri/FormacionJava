@@ -11,4 +11,10 @@ public class Persona {
     String nombre;
     String ciudad;
     int edad;
+
+    public void persona(String nombre, String ciudad, int edad){
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.edad = edad;
+    }
 }

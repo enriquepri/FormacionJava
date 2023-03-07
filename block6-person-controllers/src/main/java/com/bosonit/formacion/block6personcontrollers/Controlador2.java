@@ -52,7 +52,8 @@ public class Controlador2 {
                 return ResponseEntity.ok(bean3);
             default:
                 //return ResponseEntity.internalServerError(new Persona());
-                return ResponseEntity.badRequest().body(new Persona());
+                //return ResponseEntity.badRequest().body(new Persona());
+                return ResponseEntity.badRequest().build();
         }
     }
 }

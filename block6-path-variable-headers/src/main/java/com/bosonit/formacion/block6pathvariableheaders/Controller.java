@@ -11,11 +11,6 @@ import java.util.concurrent.atomic.AtomicLong;
 @RestController
 public class Controller {
 
-    @PostMapping("/noEntiendo")
-    public Saludo noEntiendo(@RequestBody Saludo saludo){
-        return saludo;
-    }
-
     @PostMapping("/postPersona")
     @ResponseBody
     public ResponseEntity<Person> postPersona(@RequestBody Person person){

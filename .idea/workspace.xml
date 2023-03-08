@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2f3cbcb5-557d-4181-8f0b-b74d7e10324b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/block1-process-file-and-streams/.run/MainClass.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/block1-process-file-and-streams/.run/MainClass.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/block1-process-file-and-streams/src/main/java/com/bosonit/training/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/block1-process-file-and-streams/src/main/java/com/bosonit/training/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/block1-process-file-and-streams/src/main/resources/ejemplo.csv" beforeDir="false" afterPath="$PROJECT_DIR$/block1-process-file-and-streams/src/main/resources/ejemplo.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/block3-maven-package/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/block3-maven-package/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="2f3cbcb5-557d-4181-8f0b-b74d7e10324b" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -28,14 +23,14 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "jdk.selected.JAVA_MODULE": "17",
-    "last_opened_file_path": "C:/Projects/java/formacion/FormacionJava"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;17&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/java/formacion/FormacionJava&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

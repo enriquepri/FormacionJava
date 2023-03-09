@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1dc21d4-f4d8-43eb-8b2e-046ddf4af1bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.run/MainClass.run.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.run/MainClass.run.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bosonit/training/MainClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bosonit/training/MainClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ejemplo.csv" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ejemplo.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block3-maven-package/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../block3-maven-package/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorDelete.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorGet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPost.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPut.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/domain/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/domain/Persona.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +49,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Projects/java/formacion/FormacionJava/block3-maven-package",
+    "last_opened_file_path": "C:/Projects/java/formacion/FormacionJava/block1-process-file-and-streams",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"

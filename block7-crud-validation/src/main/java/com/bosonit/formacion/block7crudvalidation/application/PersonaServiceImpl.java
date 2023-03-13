@@ -74,6 +74,47 @@ public class PersonaServiceImpl implements PersonaService{
         personaRepository.delete(p);
     }
 
+    @Override
+    public PersonaOutputDto updatePersona(PersonaInputDto personaInputDto) {
+        Persona p = personaRepository.findById(personaInputDto.getId_persona()).orElseThrow(
+                () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + personaInputDto.getId_persona())
+        );
+        if(!(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty())){
+            if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
+                throw new UnprocessableEntityException("Ya existe una persona con usuario: " + personaInputDto.getUsername());
+            }
+            if(personaInputDto.getUsername().length() < 6){
+                throw new UnprocessableEntityException("Usuario no puede tener menos de 6 caracteres");
+            }
+            if(personaInputDto.getUsername().length() > 10){
+                throw new UnprocessableEntityException("Usuario no puede tener mas de 10 caracteres");
+            }
+            p.setUsername(personaInputDto.getUsername());
+        }
+
+        if(!(personaInputDto.getPassword() == null || personaInputDto.getUsername().isEmpty())){
+            p.setPassword(personaInputDto.getPassword());
+        }
+        if(!(personaInputDto.getName() == null || personaInputDto.getUsername().isEmpty())){
+            p.setName(personaInputDto.getName());
+        }
+
+        if(!(personaInputDto.getCompany_email() == null || personaInputDto.getCompany_email().isEmpty())){
+            p.setCompany_email(personaInputDto.getCompany_email());
+        }
+
+        if(!(personaInputDto.getPersonal_email() == null || personaInputDto.getPersonal_email().isEmpty())){
+            p.setPersonal_email(personaInputDto.getPersonal_email());
+        }
+
+        if(!(personaInputDto.getCity() == null || personaInputDto.getUsername().isEmpty())){
+            p.setCity(personaInputDto.getCity());
+        }
+
+        personaRepository.save(p);
+        return mapper.personaToPersonaOutputDto(p);
+    }
+
     private PersonaInputDto validacion(PersonaInputDto personaInputDto){
         if(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty()){
             throw new UnprocessableEntityException("Usuario no puede estar vacio");

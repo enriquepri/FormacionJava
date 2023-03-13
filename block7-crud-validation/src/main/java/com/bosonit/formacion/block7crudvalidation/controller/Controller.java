@@ -58,4 +58,9 @@ public class Controller {
         personaService.deletePersonaByUsername(username);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Persona borrada con éxito");
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<PersonaOutputDto> updatePersona(@RequestBody PersonaInputDto personaInputDto){
+        return ResponseEntity.ok().body(personaService.updatePersona(personaInputDto));
+    }
 }

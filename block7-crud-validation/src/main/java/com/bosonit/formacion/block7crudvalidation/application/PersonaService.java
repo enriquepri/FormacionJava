@@ -10,4 +10,5 @@ public interface PersonaService {
     PersonaOutputDto getPersonaByUsername (String username);
     void deletePersonaById(int id);
     void deletePersonaByUsername(String username);
+    PersonaOutputDto updatePersona (PersonaInputDto personaInputDto);
 }

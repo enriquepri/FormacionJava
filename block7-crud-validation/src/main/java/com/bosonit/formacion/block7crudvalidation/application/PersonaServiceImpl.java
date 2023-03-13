@@ -4,6 +4,8 @@ import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaInputDto
 import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaMapper;
 import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaOutputDto;
 import com.bosonit.formacion.block7crudvalidation.domain.Persona;
+import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
+import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.repository.PersonaRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,9 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto getPersonaById(int id) {
-        Persona personaDevolver = personaRepository.findById(id).orElseThrow();
+        Persona personaDevolver = personaRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("No existe persona con la id " + id)
+        );
         return mapper.personaToPersonaOutputDto(personaDevolver);
     }
 
@@ -42,7 +46,9 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto getPersonaByUsername(String username) {
-        Persona p = personaRepository.findByUsername(username).orElseThrow();
+        Persona p = personaRepository.findByUsername(username).orElseThrow(
+                () -> new EntityNotFoundException("No existe persona con el usuario " + username)
+        );
         return mapper.personaToPersonaOutputDto(p);
         /*return personaRepository.findAll().stream()
                 .filter(p -> p.getUsername().equals(usuario))
@@ -53,29 +59,30 @@ public class PersonaServiceImpl implements PersonaService{
 
     private PersonaInputDto validacion(PersonaInputDto personaInputDto){
         if(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty()){
-            throw new RuntimeException("Usuario no puede estar vacio");
+            throw new UnprocessableEntityException("Usuario no puede estar vacio");
         }
         if(personaInputDto.getUsername().length() < 6){
-            throw new RuntimeException("Usuario no puede tener menos de 6");
+            throw new UnprocessableEntityException("Usuario no puede tener menos de 6 caracteres");
         }
         if(personaInputDto.getUsername().length() > 10){
-            throw new RuntimeException("Usuario no puede tener mas de 10");
+            throw new UnprocessableEntityException("Usuario no puede tener mas de 10 caracteres");
         }
         if(personaInputDto.getPassword() == null || personaInputDto.getUsername().isEmpty()){
-            throw new RuntimeException("Password no puede estar vacio");
+            throw new UnprocessableEntityException("Password no puede estar vacio");
         }
         if(personaInputDto.getName() == null || personaInputDto.getUsername().isEmpty()){
-            throw new RuntimeException("Name no puede estar vacio");
+            throw new UnprocessableEntityException("Name no puede estar vacio");
         }
         if(personaInputDto.getCompany_email() == null || personaInputDto.getPersonal_email() == null
                 || personaInputDto.getUsername().isEmpty() || personaInputDto.getUsername().isEmpty()){
-            throw new RuntimeException("Email no puede estar vacio");
+            throw new UnprocessableEntityException("Email no puede estar vacio");
         }
         if(personaInputDto.getCity() == null || personaInputDto.getUsername().isEmpty()){
-            throw new RuntimeException("City no puede estar vacio");
+            throw new UnprocessableEntityException("City no puede estar vacio");
         }
         if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
-            throw new RuntimeException(("Ya existe el usuario"));
+            throw new UnprocessableEntityException(
+                    ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
         }
 
         personaInputDto.setCreated_date(new Date());

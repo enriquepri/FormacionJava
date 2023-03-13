@@ -8,4 +8,6 @@ public interface PersonaService {
     Iterable<PersonaOutputDto> getAllPersonas();
     PersonaOutputDto getPersonaById (int id);
     PersonaOutputDto getPersonaByUsername (String username);
+    void deletePersonaById(int id);
+    void deletePersonaByUsername(String username);
 }

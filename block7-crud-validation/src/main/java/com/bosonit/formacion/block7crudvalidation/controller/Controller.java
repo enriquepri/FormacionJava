@@ -42,4 +42,20 @@ public class Controller {
     ){
         return ResponseEntity.ok().body(personaService.getPersonaById(id));
     }
+
+    @DeleteMapping("/deleteId/{id}")
+    public ResponseEntity<String> deleteById(
+            @PathVariable int id
+    ){
+        personaService.deletePersonaById(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Persona borrada con éxito");
+    }
+
+    @DeleteMapping("/deleteUsername/{username}")
+    public ResponseEntity<String> deleteByUsername(
+            @PathVariable String username
+    ){
+        personaService.deletePersonaByUsername(username);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Persona borrada con éxito");
+    }
 }

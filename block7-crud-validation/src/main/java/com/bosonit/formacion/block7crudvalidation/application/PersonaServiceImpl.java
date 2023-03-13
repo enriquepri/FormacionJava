@@ -57,6 +57,23 @@ public class PersonaServiceImpl implements PersonaService{
                 .get();*/
     }
 
+    @Override
+    public void deletePersonaById(int id) {
+        personaRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("No hay persona con Id: " + id)
+        );
+        personaRepository.deleteById(id);
+    }
+
+    @Override
+    public void deletePersonaByUsername(String username) {
+        Persona p = personaRepository.findByUsername(username).orElseThrow(
+                () -> new EntityNotFoundException("No hay persona con Username: " + username)
+        );
+        //personaRepository.deleteByUsername(username);
+        personaRepository.delete(p);
+    }
+
     private PersonaInputDto validacion(PersonaInputDto personaInputDto){
         if(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty()){
             throw new UnprocessableEntityException("Usuario no puede estar vacio");

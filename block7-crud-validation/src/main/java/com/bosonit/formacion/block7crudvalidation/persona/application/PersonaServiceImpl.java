@@ -1,19 +1,18 @@
-package com.bosonit.formacion.block7crudvalidation.application;
+package com.bosonit.formacion.block7crudvalidation.persona.application;
 
-import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaInputDto;
-import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaMapper;
-import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaOutputDto;
-import com.bosonit.formacion.block7crudvalidation.domain.Persona;
+import com.bosonit.formacion.block7crudvalidation.persona.controller.dto.PersonaInputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.controller.dto.PersonaMapper;
+import com.bosonit.formacion.block7crudvalidation.persona.controller.dto.PersonaOutputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
 import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
-import com.bosonit.formacion.block7crudvalidation.repository.PersonaRepository;
+import com.bosonit.formacion.block7crudvalidation.persona.repository.PersonaRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PersonaServiceImpl implements PersonaService{

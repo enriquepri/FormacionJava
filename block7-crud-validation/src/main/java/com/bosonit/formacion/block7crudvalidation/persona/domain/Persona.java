@@ -1,4 +1,4 @@
-package com.bosonit.formacion.block7crudvalidation.domain;
+package com.bosonit.formacion.block7crudvalidation.persona.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

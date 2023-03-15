@@ -1,6 +1,6 @@
-package com.bosonit.formacion.block7crudvalidation.repository;
+package com.bosonit.formacion.block7crudvalidation.persona.repository;
 
-import com.bosonit.formacion.block7crudvalidation.domain.Persona;
+import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

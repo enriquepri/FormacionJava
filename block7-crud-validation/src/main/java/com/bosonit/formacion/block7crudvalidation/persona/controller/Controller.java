@@ -1,16 +1,13 @@
-package com.bosonit.formacion.block7crudvalidation.controller;
+package com.bosonit.formacion.block7crudvalidation.persona.controller;
 
 
-import com.bosonit.formacion.block7crudvalidation.application.PersonaService;
-import com.bosonit.formacion.block7crudvalidation.application.PersonaServiceImpl;
-import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaInputDto;
-import com.bosonit.formacion.block7crudvalidation.controller.dto.PersonaOutputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.application.PersonaService;
+import com.bosonit.formacion.block7crudvalidation.persona.controller.dto.PersonaInputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.controller.dto.PersonaOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Date;
 
 @RestController
 public class Controller {

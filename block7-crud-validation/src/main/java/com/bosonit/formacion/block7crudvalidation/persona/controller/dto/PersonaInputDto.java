@@ -10,7 +10,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PersonaInputDto {
-    int id_persona;
+    Integer id_persona;
     String username;
     String password;
     String name;
@@ -23,7 +23,14 @@ public class PersonaInputDto {
     String imagen_url;
     Date termination_date;
 
-    public PersonaInputDto(String username, String password, String name, String surname, String company_email, String personal_email, String city, String imagen_url) {
+    public PersonaInputDto(String username,
+                           String password,
+                           String name,
+                           String surname,
+                           String company_email,
+                           String personal_email,
+                           String city,
+                           String imagen_url) {
         this.username = username;
         this.password = password;
         this.name = name;

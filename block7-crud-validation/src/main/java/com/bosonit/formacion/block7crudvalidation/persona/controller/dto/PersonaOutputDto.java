@@ -10,7 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PersonaOutputDto {
-    int id_persona;
+    Integer id_persona;
     String username;
     String name;
     String surname;

@@ -16,7 +16,7 @@ import java.util.Date;
 public class Persona {
     @Id
     @GeneratedValue
-    int id_persona;
+    Integer id_persona;
     String username;
     String password;
     String name;

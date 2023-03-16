@@ -28,4 +28,5 @@ public class Persona {
     Date created_date;
     String imagen_url;
     Date termination_date;
+
 }

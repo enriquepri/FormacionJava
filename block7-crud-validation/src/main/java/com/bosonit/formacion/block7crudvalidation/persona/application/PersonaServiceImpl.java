@@ -23,6 +23,10 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto addPersona(PersonaInputDto personaInputDto){
+        if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
+            throw new UnprocessableEntityException(
+                    ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
+        }
         personaInputDto = validacion(personaInputDto);
         Persona persona = personaRepository.save(mapper.personaInputDtoToPersona(personaInputDto));
         return mapper.personaToPersonaOutputDto(persona);
@@ -75,7 +79,7 @@ public class PersonaServiceImpl implements PersonaService{
 
     @Override
     public PersonaOutputDto updatePersona(PersonaInputDto personaInputDto) {
-        Persona p = personaRepository.findById(personaInputDto.getId_persona()).orElseThrow(
+        /*Persona p = personaRepository.findById(personaInputDto.getId_persona()).orElseThrow(
                 () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + personaInputDto.getId_persona())
         );
         if(!(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty())){
@@ -91,10 +95,10 @@ public class PersonaServiceImpl implements PersonaService{
             p.setUsername(personaInputDto.getUsername());
         }
 
-        if(!(personaInputDto.getPassword() == null || personaInputDto.getUsername().isEmpty())){
+        if(!(personaInputDto.getPassword() == null || personaInputDto.getPassword().isEmpty())){
             p.setPassword(personaInputDto.getPassword());
         }
-        if(!(personaInputDto.getName() == null || personaInputDto.getUsername().isEmpty())){
+        if(!(personaInputDto.getName() == null || personaInputDto.getName().isEmpty())){
             p.setName(personaInputDto.getName());
         }
 
@@ -106,12 +110,27 @@ public class PersonaServiceImpl implements PersonaService{
             p.setPersonal_email(personaInputDto.getPersonal_email());
         }
 
-        if(!(personaInputDto.getCity() == null || personaInputDto.getUsername().isEmpty())){
+        if(!(personaInputDto.getCity() == null || personaInputDto.getCity().isEmpty())){
             p.setCity(personaInputDto.getCity());
         }
 
         personaRepository.save(p);
-        return mapper.personaToPersonaOutputDto(p);
+        return mapper.personaToPersonaOutputDto(p);*/
+
+        int id = personaInputDto.getId_persona();
+        Persona p = personaRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + id)
+        );
+
+        if(!personaInputDto.getUsername().equals(p.getUsername()) &&
+                personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
+            throw new UnprocessableEntityException("Ya existe un usuario con ese usuario");
+        }
+
+        Persona person = mapper.personaInputDtoToPersona(validacion(personaInputDto));
+
+        person.setId_persona(p.getId_persona());
+        return mapper.personaToPersonaOutputDto(personaRepository.save(person));
     }
 
     private PersonaInputDto validacion(PersonaInputDto personaInputDto){
@@ -124,22 +143,18 @@ public class PersonaServiceImpl implements PersonaService{
         if(personaInputDto.getUsername().length() > 10){
             throw new UnprocessableEntityException("Usuario no puede tener mas de 10 caracteres");
         }
-        if(personaInputDto.getPassword() == null || personaInputDto.getUsername().isEmpty()){
+        if(personaInputDto.getPassword() == null || personaInputDto.getPassword().isEmpty()){
             throw new UnprocessableEntityException("Password no puede estar vacio");
         }
-        if(personaInputDto.getName() == null || personaInputDto.getUsername().isEmpty()){
+        if(personaInputDto.getName() == null || personaInputDto.getName().isEmpty()){
             throw new UnprocessableEntityException("Name no puede estar vacio");
         }
         if(personaInputDto.getCompany_email() == null || personaInputDto.getPersonal_email() == null
-                || personaInputDto.getUsername().isEmpty() || personaInputDto.getUsername().isEmpty()){
+                || personaInputDto.getCompany_email().isEmpty() || personaInputDto.getPersonal_email().isEmpty()){
             throw new UnprocessableEntityException("Email no puede estar vacio");
         }
-        if(personaInputDto.getCity() == null || personaInputDto.getUsername().isEmpty()){
+        if(personaInputDto.getCity() == null || personaInputDto.getCity().isEmpty()){
             throw new UnprocessableEntityException("City no puede estar vacio");
-        }
-        if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
-            throw new UnprocessableEntityException(
-                    ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
         }
 
         personaInputDto.setCreated_date(new Date());

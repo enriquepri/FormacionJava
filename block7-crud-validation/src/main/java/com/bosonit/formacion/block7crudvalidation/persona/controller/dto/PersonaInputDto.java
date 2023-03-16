@@ -22,4 +22,15 @@ public class PersonaInputDto {
     Date created_date;
     String imagen_url;
     Date termination_date;
+
+    public PersonaInputDto(String username, String password, String name, String surname, String company_email, String personal_email, String city, String imagen_url) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.company_email = company_email;
+        this.personal_email = personal_email;
+        this.city = city;
+        this.imagen_url = imagen_url;
+    }
 }

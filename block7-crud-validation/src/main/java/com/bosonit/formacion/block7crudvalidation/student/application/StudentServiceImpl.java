@@ -28,10 +28,14 @@ public class StudentServiceImpl implements StudentService {
                 () -> new EntityNotFoundException("No existe persona con la id: " + studentInputDto.getPersona_id())
         );
 
-        Optional<Student> comprobar = studentRepository.findByPersona(person);
-        if (comprobar.isPresent()) {
+        if(person.getStudent() != null){
             throw new UnprocessableEntityException("La persona ya está asignada");
         }
+
+        /*Optional<Student> comprobar = studentRepository.findByPersona(person);
+        if (comprobar.isPresent()) {
+            throw new UnprocessableEntityException("La persona ya está asignada");
+        }*/
 
         Student student = new Student(studentInputDto);
         student.setPersona(person);

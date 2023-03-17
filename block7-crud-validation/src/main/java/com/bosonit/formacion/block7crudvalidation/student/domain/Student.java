@@ -5,12 +5,11 @@ import com.bosonit.formacion.block7crudvalidation.student.controller.dto.Student
 import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
 import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDtoCompleto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Student {
@@ -23,6 +22,7 @@ public class Student {
     private int num_hours_week;
     private String comments;
     /*@ManyToOne
+    @JoinColumn(name = "id_profesor")
     private Profesor profesor;*/
     private String branch;
 

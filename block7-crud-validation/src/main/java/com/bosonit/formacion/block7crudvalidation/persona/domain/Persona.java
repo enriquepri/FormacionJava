@@ -1,8 +1,10 @@
 package com.bosonit.formacion.block7crudvalidation.persona.domain;
 
+import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,4 +31,6 @@ public class Persona {
     String imagen_url;
     Date termination_date;
 
+    @OneToOne(mappedBy = "persona")
+    Student student;
 }

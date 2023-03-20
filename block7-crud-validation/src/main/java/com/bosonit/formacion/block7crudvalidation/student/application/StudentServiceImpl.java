@@ -31,6 +31,9 @@ public class StudentServiceImpl implements StudentService {
         if(person.getStudent() != null){
             throw new UnprocessableEntityException("La persona ya está asignada");
         }
+        if(person.getProfesor() != null){
+            throw new UnprocessableEntityException("La persona es un profesor");
+        }
 
         /*Optional<Student> comprobar = studentRepository.findByPersona(person);
         if (comprobar.isPresent()) {

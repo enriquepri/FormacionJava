@@ -1,5 +1,6 @@
 package com.bosonit.formacion.block7crudvalidation.persona.domain;
 
+import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -33,4 +34,6 @@ public class Persona {
 
     @OneToOne(mappedBy = "persona")
     Student student;
+    @OneToOne(mappedBy = "persona")
+    Profesor profesor;
 }

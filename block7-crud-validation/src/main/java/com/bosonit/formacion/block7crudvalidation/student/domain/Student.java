@@ -1,6 +1,7 @@
 package com.bosonit.formacion.block7crudvalidation.student.domain;
 
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
+import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
 import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentInputDto;
 import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
 import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDtoCompleto;
@@ -21,9 +22,9 @@ public class Student {
     private Persona persona;
     private int num_hours_week;
     private String comments;
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "id_profesor")
-    private Profesor profesor;*/
+    private Profesor profesor;
     private String branch;
 
     public Student(StudentInputDto studentInputDto){

@@ -19,7 +19,7 @@ public class PersonaServiceImpl implements PersonaService{
     @Autowired
     PersonaRepository personaRepository;
 
-    PersonaMapper mapper = Mappers.getMapper(PersonaMapper.class);
+    //PersonaMapper mapper = Mappers.getMapper(PersonaMapper.class);
 
     @Override
     public PersonaOutputDto addPersona(PersonaInputDto personaInputDto){
@@ -28,8 +28,8 @@ public class PersonaServiceImpl implements PersonaService{
                     ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
         }
         personaInputDto = validacion(personaInputDto);
-        Persona persona = personaRepository.save(mapper.personaInputDtoToPersona(personaInputDto));
-        return mapper.personaToPersonaOutputDto(persona);
+        Persona persona = personaRepository.save(new Persona(personaInputDto));
+        return persona.personaToPersonaOutputDto();
     }
 
     @Override
@@ -37,13 +37,13 @@ public class PersonaServiceImpl implements PersonaService{
         Persona personaDevolver = personaRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No existe persona con la id " + id)
         );
-        return mapper.personaToPersonaOutputDto(personaDevolver);
+        return personaDevolver.personaToPersonaOutputDto();
     }
 
     @Override
     public List<PersonaOutputDto> getAllPersonas() {
         return personaRepository.findAll().stream()
-                .map(p -> mapper.personaToPersonaOutputDto(p))
+                .map(Persona::personaToPersonaOutputDto)
                 .toList();
     }
 
@@ -52,7 +52,7 @@ public class PersonaServiceImpl implements PersonaService{
         Persona p = personaRepository.findByUsername(username).orElseThrow(
                 () -> new EntityNotFoundException("No existe persona con el usuario " + username)
         );
-        return mapper.personaToPersonaOutputDto(p);
+        return p.personaToPersonaOutputDto();
         /*return personaRepository.findAll().stream()
                 .filter(p -> p.getUsername().equals(usuario))
                 .map(p -> mapper.personaToPersonaOutputDto(p))
@@ -127,10 +127,10 @@ public class PersonaServiceImpl implements PersonaService{
             throw new UnprocessableEntityException("Ya existe un usuario con ese usuario");
         }
 
-        Persona person = mapper.personaInputDtoToPersona(validacion(personaInputDto));
+        Persona person = new Persona(validacion(personaInputDto));
 
         person.setId_persona(p.getId_persona());
-        return mapper.personaToPersonaOutputDto(personaRepository.save(person));
+        return personaRepository.save(person).personaToPersonaOutputDto();
     }
 
     private PersonaInputDto validacion(PersonaInputDto personaInputDto){

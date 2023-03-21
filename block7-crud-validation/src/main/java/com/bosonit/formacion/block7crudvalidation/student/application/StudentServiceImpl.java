@@ -3,17 +3,17 @@ package com.bosonit.formacion.block7crudvalidation.student.application;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
 import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
-import com.bosonit.formacion.block7crudvalidation.persona.repository.PersonaRepository;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentInputDto;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDtoCompleto;
+import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.repository.PersonaRepository;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentInputDto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDtoCompleto;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
-import com.bosonit.formacion.block7crudvalidation.student.repository.StudentRepository;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -28,17 +28,12 @@ public class StudentServiceImpl implements StudentService {
                 () -> new EntityNotFoundException("No existe persona con la id: " + studentInputDto.getPersona_id())
         );
 
-        if(person.getStudent() != null){
+        if (person.getStudent() != null) {
             throw new UnprocessableEntityException("La persona ya está asignada");
         }
-        if(person.getProfesor() != null){
+        if (person.getProfesor() != null) {
             throw new UnprocessableEntityException("La persona es un profesor");
         }
-
-        /*Optional<Student> comprobar = studentRepository.findByPersona(person);
-        if (comprobar.isPresent()) {
-            throw new UnprocessableEntityException("La persona ya está asignada");
-        }*/
 
         Student student = new Student(studentInputDto);
         student.setPersona(person);
@@ -46,28 +41,26 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public List<StudentOutputDtoCompleto> getAllStudents() {
+    public List<StudentOutputDto> getAllStudents() {
         return studentRepository.findAll().stream()
-                .map(Student::studentToStudentOutputDtoCompleto)
+                .map(Student::studentToStudentOutputDto)
                 .toList();
     }
 
     @Override
-    public StudentOutputDtoCompleto getStudentByIdCompleto(int id) {
-        return studentRepository.findById(id).orElseThrow(
+    public StudentOutputDto getStudentById(Integer id, String outputType) {
+        Student student = studentRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No existe student con id: " + id)
-        ).studentToStudentOutputDtoCompleto();
+        );
+
+        if (outputType.equals("simple")) return student.studentToStudentOutputDto();
+        if (outputType.equals("full")) return student.studentToStudentOutputDtoCompleto();
+
+        throw new UnprocessableEntityException("Las opciones disponibles son simple o full");
     }
 
     @Override
-    public StudentOutputDto getStudentById(int id) {
-        return studentRepository.findById(id).orElseThrow(
-                () -> new EntityNotFoundException("No existe student con id: " + id)
-        ).studentToStudentOutputDto();
-    }
-
-    @Override
-    public void deleteStudentById(int id) {
+    public void deleteStudentById(Integer id) {
         Student student = studentRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No existe student con id: " + id)
         );

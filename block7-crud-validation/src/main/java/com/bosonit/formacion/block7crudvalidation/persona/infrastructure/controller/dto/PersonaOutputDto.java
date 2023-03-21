@@ -1,4 +1,4 @@
-package com.bosonit.formacion.block7crudvalidation.persona.controller.dto;
+package com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

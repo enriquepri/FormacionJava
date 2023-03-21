@@ -1,8 +1,8 @@
 package com.bosonit.formacion.block7crudvalidation.profesor.domain;
 
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorInputDto;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorOutputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorInputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorOutputDto;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -36,11 +36,6 @@ public class Profesor {
     }
 
     public ProfesorOutputDto profesorToProfesorOutputDto(){
-        return new ProfesorOutputDto(
-                this.id,
-                this.persona.getId_persona(),
-                this.comments,
-                this.branch
-        );
+        return new ProfesorOutputDto(this);
     }
 }

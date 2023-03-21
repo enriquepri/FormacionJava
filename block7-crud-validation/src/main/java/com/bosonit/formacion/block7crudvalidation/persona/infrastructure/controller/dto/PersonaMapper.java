@@ -1,4 +1,4 @@
-package com.bosonit.formacion.block7crudvalidation.persona.controller.dto;
+package com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto;
 
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import org.mapstruct.Mapper;

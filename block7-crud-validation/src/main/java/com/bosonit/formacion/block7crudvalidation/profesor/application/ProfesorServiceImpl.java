@@ -3,14 +3,14 @@ package com.bosonit.formacion.block7crudvalidation.profesor.application;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
 import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
-import com.bosonit.formacion.block7crudvalidation.persona.repository.PersonaRepository;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorInputDto;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorOutputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.repository.PersonaRepository;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorInputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorOutputDto;
 import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
-import com.bosonit.formacion.block7crudvalidation.profesor.repository.ProfesorRepository;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.repository.ProfesorRepository;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDto;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
-import com.bosonit.formacion.block7crudvalidation.student.repository.StudentRepository;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +70,9 @@ public class ProfesorServiceImpl implements ProfesorService{
         Student student = studentRepository.findById(student_id).orElseThrow(
                 () -> new EntityNotFoundException("No existe alumno con el id: " + student_id)
         );
+        if(student.getProfesor() != null){
+            throw new UnprocessableEntityException("El estudiante ya tiene profesor");
+        }
 
         student.setProfesor(profesor);
         profesor.getStudents().add(student);

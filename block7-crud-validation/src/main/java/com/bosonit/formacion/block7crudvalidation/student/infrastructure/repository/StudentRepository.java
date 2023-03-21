@@ -1,4 +1,4 @@
-package com.bosonit.formacion.block7crudvalidation.student.repository;
+package com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository;
 
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;

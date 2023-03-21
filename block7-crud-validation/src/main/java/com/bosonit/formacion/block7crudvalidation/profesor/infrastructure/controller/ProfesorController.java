@@ -1,9 +1,9 @@
-package com.bosonit.formacion.block7crudvalidation.profesor.controller;
+package com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller;
 
 import com.bosonit.formacion.block7crudvalidation.profesor.application.ProfesorService;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorInputDto;
-import com.bosonit.formacion.block7crudvalidation.profesor.controller.dto.ProfesorOutputDto;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorInputDto;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorOutputDto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

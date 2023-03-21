@@ -1,10 +1,10 @@
-package com.bosonit.formacion.block7crudvalidation.student.controller;
+package com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller;
 
 import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.student.application.StudentService;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentInputDto;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDto;
-import com.bosonit.formacion.block7crudvalidation.student.controller.dto.StudentOutputDtoCompleto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentInputDto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDto;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDtoCompleto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ public class StudentController {
     }
 
     @GetMapping("/getAll")
-    public Iterable<StudentOutputDtoCompleto> getAllStudents(){
+    public Iterable<StudentOutputDto> getAllStudents(){
         return studentService.getAllStudents();
     }
 
@@ -30,12 +30,7 @@ public class StudentController {
     public ResponseEntity<StudentOutputDto> getStudentByID(
             @PathVariable int id,
             @RequestParam (defaultValue = "simple") String outputType){
-        if(outputType.equals("simple")){
-            return ResponseEntity.ok(studentService.getStudentById(id));
-        } else if (outputType.equals("full")) {
-            return ResponseEntity.ok(studentService.getStudentByIdCompleto(id));
-        }
-        throw new UnprocessableEntityException("Las opciones disponibles son simple o full");
+        return ResponseEntity.ok(studentService.getStudentById(id, outputType));
     }
 
     @DeleteMapping("/eliminar/{id}")

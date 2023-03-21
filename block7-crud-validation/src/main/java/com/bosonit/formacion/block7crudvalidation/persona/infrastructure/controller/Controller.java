@@ -29,16 +29,18 @@ public class Controller {
 
     @GetMapping("/usuario/{user}")
     public ResponseEntity<PersonaOutputDto> getByUsuario(
-            @PathVariable String user
+            @PathVariable String user,
+            @RequestParam (defaultValue = "simple") String outputType
     ){
-        return ResponseEntity.ok().body(personaService.getPersonaByUsername(user));
+        return ResponseEntity.ok().body(personaService.getPersonaByUsername(user, outputType));
     }
 
     @GetMapping("/id/{id}")
     public ResponseEntity<PersonaOutputDto> getByID(
-            @PathVariable int id
+            @PathVariable int id,
+            @RequestParam (defaultValue = "simple") String outputType
     ){
-        return ResponseEntity.ok().body(personaService.getPersonaById(id));
+        return ResponseEntity.ok().body(personaService.getPersonaById(id, outputType));
     }
 
     @DeleteMapping("/deleteId/{id}")

@@ -15,15 +15,15 @@ import java.util.Date;
 import java.util.List;
 
 @Service
-public class PersonaServiceImpl implements PersonaService{
+public class PersonaServiceImpl implements PersonaService {
     @Autowired
     PersonaRepository personaRepository;
 
     //PersonaMapper mapper = Mappers.getMapper(PersonaMapper.class);
 
     @Override
-    public PersonaOutputDto addPersona(PersonaInputDto personaInputDto){
-        if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
+    public PersonaOutputDto addPersona(PersonaInputDto personaInputDto) {
+        if (personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()) {
             throw new UnprocessableEntityException(
                     ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
         }
@@ -33,11 +33,20 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
-    public PersonaOutputDto getPersonaById(int id) {
+    public PersonaOutputDto getPersonaById(int id, String outputType) {
         Persona personaDevolver = personaRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No existe persona con la id " + id)
         );
-        return personaDevolver.personaToPersonaOutputDto();
+
+        if (outputType.equals("simple")) return personaDevolver.personaToPersonaOutputDto();
+
+        if (outputType.equals("full")) {
+            if (personaDevolver.getStudent() != null) return personaDevolver.personaToPersonaStudentOutputDto();
+            if (personaDevolver.getProfesor() != null) return personaDevolver.personaToPersonaProfesorOutputDto();
+            return personaDevolver.personaToPersonaOutputDto();
+        }
+
+        throw new UnprocessableEntityException("Las opciones son simple o full");
     }
 
     @Override
@@ -48,11 +57,21 @@ public class PersonaServiceImpl implements PersonaService{
     }
 
     @Override
-    public PersonaOutputDto getPersonaByUsername(String username) {
+    public PersonaOutputDto getPersonaByUsername(String username, String outputType) {
         Persona p = personaRepository.findByUsername(username).orElseThrow(
                 () -> new EntityNotFoundException("No existe persona con el usuario " + username)
         );
-        return p.personaToPersonaOutputDto();
+
+        if (outputType.equals("simple")) return p.personaToPersonaOutputDto();
+
+        if (outputType.equals("full")) {
+            if (p.getStudent() != null) return p.personaToPersonaStudentOutputDto();
+            if (p.getProfesor() != null) return p.personaToPersonaProfesorOutputDto();
+            return p.personaToPersonaOutputDto();
+        }
+
+        throw new UnprocessableEntityException("Las opciones son simple o full");
+
         /*return personaRepository.findAll().stream()
                 .filter(p -> p.getUsername().equals(usuario))
                 .map(p -> mapper.personaToPersonaOutputDto(p))
@@ -122,8 +141,8 @@ public class PersonaServiceImpl implements PersonaService{
                 () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + id)
         );
 
-        if(!personaInputDto.getUsername().equals(p.getUsername()) &&
-                personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
+        if (!personaInputDto.getUsername().equals(p.getUsername()) &&
+                personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()) {
             throw new UnprocessableEntityException("Ya existe un usuario con ese usuario");
         }
 
@@ -133,27 +152,27 @@ public class PersonaServiceImpl implements PersonaService{
         return personaRepository.save(person).personaToPersonaOutputDto();
     }
 
-    private PersonaInputDto validacion(PersonaInputDto personaInputDto){
-        if(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty()){
+    private PersonaInputDto validacion(PersonaInputDto personaInputDto) {
+        if (personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty()) {
             throw new UnprocessableEntityException("Usuario no puede estar vacio");
         }
-        if(personaInputDto.getUsername().length() < 6){
+        if (personaInputDto.getUsername().length() < 6) {
             throw new UnprocessableEntityException("Usuario no puede tener menos de 6 caracteres");
         }
-        if(personaInputDto.getUsername().length() > 10){
+        if (personaInputDto.getUsername().length() > 10) {
             throw new UnprocessableEntityException("Usuario no puede tener mas de 10 caracteres");
         }
-        if(personaInputDto.getPassword() == null || personaInputDto.getPassword().isEmpty()){
+        if (personaInputDto.getPassword() == null || personaInputDto.getPassword().isEmpty()) {
             throw new UnprocessableEntityException("Password no puede estar vacio");
         }
-        if(personaInputDto.getName() == null || personaInputDto.getName().isEmpty()){
+        if (personaInputDto.getName() == null || personaInputDto.getName().isEmpty()) {
             throw new UnprocessableEntityException("Name no puede estar vacio");
         }
-        if(personaInputDto.getCompany_email() == null || personaInputDto.getPersonal_email() == null
-                || personaInputDto.getCompany_email().isEmpty() || personaInputDto.getPersonal_email().isEmpty()){
+        if (personaInputDto.getCompany_email() == null || personaInputDto.getPersonal_email() == null
+                || personaInputDto.getCompany_email().isEmpty() || personaInputDto.getPersonal_email().isEmpty()) {
             throw new UnprocessableEntityException("Email no puede estar vacio");
         }
-        if(personaInputDto.getCity() == null || personaInputDto.getCity().isEmpty()){
+        if (personaInputDto.getCity() == null || personaInputDto.getCity().isEmpty()) {
             throw new UnprocessableEntityException("City no puede estar vacio");
         }
 

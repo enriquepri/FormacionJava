@@ -2,6 +2,8 @@ package com.bosonit.formacion.block7crudvalidation.persona.domain;
 
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaInputDto;
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputDto;
+import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputProfesorDto;
+import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputStudentDto;
 import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import jakarta.persistence.Entity;
@@ -56,5 +58,13 @@ public class Persona {
 
     public PersonaOutputDto personaToPersonaOutputDto(){
         return new PersonaOutputDto(this);
+    }
+
+    public PersonaOutputStudentDto personaToPersonaStudentOutputDto(){
+        return new PersonaOutputStudentDto(this);
+    }
+
+    public PersonaOutputProfesorDto personaToPersonaProfesorOutputDto(){
+        return new PersonaOutputProfesorDto(this);
     }
 }

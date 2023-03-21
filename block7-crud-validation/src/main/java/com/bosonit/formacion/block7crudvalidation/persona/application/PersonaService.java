@@ -6,8 +6,8 @@ import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.control
 public interface PersonaService {
     PersonaOutputDto addPersona (PersonaInputDto persona);
     Iterable<PersonaOutputDto> getAllPersonas();
-    PersonaOutputDto getPersonaById (int id);
-    PersonaOutputDto getPersonaByUsername (String username);
+    PersonaOutputDto getPersonaById (int id, String outputType);
+    PersonaOutputDto getPersonaByUsername (String username, String outputType);
     void deletePersonaById(int id);
     void deletePersonaByUsername(String username);
     PersonaOutputDto updatePersona (PersonaInputDto personaInputDto);

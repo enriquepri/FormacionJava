@@ -17,7 +17,7 @@ public class ProfesorController {
     @PostMapping("/addProfesor")
     public ResponseEntity<ProfesorOutputDto> addProfesor(
             @RequestBody ProfesorInputDto profesorInputDto
-            ){
+    ) {
         return ResponseEntity.ok().body(profesorService.profesorAdd(profesorInputDto));
     }
 
@@ -25,13 +25,13 @@ public class ProfesorController {
     public ResponseEntity<String> addStudentToProfesor(
             @RequestParam int profesor_id,
             @RequestParam int student_id
-    ){
+    ) {
         profesorService.addStudentToProfesor(profesor_id, student_id);
         return ResponseEntity.ok("Añadido estudiante");
     }
 
     @GetMapping("/getAllProfesors")
-    public ResponseEntity<Iterable<ProfesorOutputDto>> getAllProfesors(){
+    public ResponseEntity<Iterable<ProfesorOutputDto>> getAllProfesors() {
         return ResponseEntity.ok()
                 .body(profesorService.getAllProfesors());
     }
@@ -39,8 +39,16 @@ public class ProfesorController {
     @GetMapping("/getStudents/{profesor_id}")
     public ResponseEntity<Iterable<StudentOutputDto>> getStudentsByProfesor(
             @PathVariable int profesor_id
-    ){
+    ) {
         return ResponseEntity.ok()
                 .body(profesorService.getAllStudentsFromProfesor(profesor_id));
+    }
+
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity<String> deleteById(
+            @PathVariable Integer id
+    ) {
+        profesorService.deleteProfesorById(id);
+        return ResponseEntity.ok("Profesor eliminado");
     }
 }

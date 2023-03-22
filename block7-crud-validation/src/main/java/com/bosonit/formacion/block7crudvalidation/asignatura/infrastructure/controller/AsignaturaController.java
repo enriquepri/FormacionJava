@@ -46,4 +46,12 @@ public class AsignaturaController {
         asignaturaService.addStudentToAsignatura(asignatura_id, student_id);
         return ResponseEntity.ok("Estudiante añadido correctamente");
     }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteById(
+            @PathVariable Integer id
+    ){
+        asignaturaService.deleteById(id);
+        return ResponseEntity.ok("Asignatura eliminada");
+    }
 }

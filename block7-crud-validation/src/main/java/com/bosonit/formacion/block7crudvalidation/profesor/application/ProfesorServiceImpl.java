@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ProfesorServiceImpl implements ProfesorService{
+public class ProfesorServiceImpl implements ProfesorService {
     @Autowired
     ProfesorRepository profesorRepository;
     @Autowired
@@ -28,13 +28,13 @@ public class ProfesorServiceImpl implements ProfesorService{
     @Override
     public ProfesorOutputDto profesorAdd(ProfesorInputDto profesorInputDto) {
         Persona persona = personaRepository.findById(profesorInputDto.getId_persona()).orElseThrow(
-                ()-> new EntityNotFoundException("No hay persona con id: " + profesorInputDto.getId_persona())
+                () -> new EntityNotFoundException("No hay persona con id: " + profesorInputDto.getId_persona())
         );
 
-        if(persona.getProfesor() != null){
+        if (persona.getProfesor() != null) {
             throw new UnprocessableEntityException("La persona ya está asignada");
         }
-        if(persona.getStudent() != null){
+        if (persona.getStudent() != null) {
             throw new UnprocessableEntityException("La persona es un estudiante");
         }
 
@@ -70,7 +70,7 @@ public class ProfesorServiceImpl implements ProfesorService{
         Student student = studentRepository.findById(student_id).orElseThrow(
                 () -> new EntityNotFoundException("No existe alumno con el id: " + student_id)
         );
-        if(student.getProfesor() != null){
+        if (student.getProfesor() != null) {
             throw new UnprocessableEntityException("El estudiante ya tiene profesor");
         }
 
@@ -79,5 +79,21 @@ public class ProfesorServiceImpl implements ProfesorService{
 
         studentRepository.save(student);
         profesorRepository.save(profesor);
+    }
+
+    @Override
+    public void deleteProfesorById(Integer profesor_id) {
+        Profesor profesor = profesorRepository.findById(profesor_id).orElseThrow(
+                () -> new EntityNotFoundException("No existe profesor con la id: " + profesor_id)
+        );
+
+        if(!profesor.getStudents().isEmpty()){
+            for(Student s : profesor.getStudents()){
+                s.setProfesor(null);
+                studentRepository.save(s);
+            }
+        }
+
+        profesorRepository.delete(profesor);
     }
 }

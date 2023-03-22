@@ -7,6 +7,10 @@ import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
 import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.repository.PersonaRepository;
+import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
+import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.repository.ProfesorRepository;
+import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
+import com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository.StudentRepository;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +22,10 @@ import java.util.List;
 public class PersonaServiceImpl implements PersonaService {
     @Autowired
     PersonaRepository personaRepository;
+    @Autowired
+    StudentRepository studentRepository;
+    @Autowired
+    ProfesorRepository profesorRepository;
 
     //PersonaMapper mapper = Mappers.getMapper(PersonaMapper.class);
 
@@ -81,61 +89,28 @@ public class PersonaServiceImpl implements PersonaService {
 
     @Override
     public void deletePersonaById(int id) {
-        personaRepository.findById(id).orElseThrow(
+        Persona persona = personaRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No hay persona con Id: " + id)
         );
+
+        eliminarRelacionesPersona(persona);
+
         personaRepository.deleteById(id);
     }
 
     @Override
     public void deletePersonaByUsername(String username) {
-        Persona p = personaRepository.findByUsername(username).orElseThrow(
+        Persona persona = personaRepository.findByUsername(username).orElseThrow(
                 () -> new EntityNotFoundException("No hay persona con Username: " + username)
         );
-        //personaRepository.deleteByUsername(username);
-        personaRepository.delete(p);
+
+        eliminarRelacionesPersona(persona);
+
+        personaRepository.delete(persona);
     }
 
     @Override
     public PersonaOutputDto updatePersona(PersonaInputDto personaInputDto) {
-        /*Persona p = personaRepository.findById(personaInputDto.getId_persona()).orElseThrow(
-                () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + personaInputDto.getId_persona())
-        );
-        if(!(personaInputDto.getUsername() == null || personaInputDto.getUsername().isEmpty())){
-            if(personaRepository.findByUsername(personaInputDto.getUsername()).isPresent()){
-                throw new UnprocessableEntityException("Ya existe una persona con usuario: " + personaInputDto.getUsername());
-            }
-            if(personaInputDto.getUsername().length() < 6){
-                throw new UnprocessableEntityException("Usuario no puede tener menos de 6 caracteres");
-            }
-            if(personaInputDto.getUsername().length() > 10){
-                throw new UnprocessableEntityException("Usuario no puede tener mas de 10 caracteres");
-            }
-            p.setUsername(personaInputDto.getUsername());
-        }
-
-        if(!(personaInputDto.getPassword() == null || personaInputDto.getPassword().isEmpty())){
-            p.setPassword(personaInputDto.getPassword());
-        }
-        if(!(personaInputDto.getName() == null || personaInputDto.getName().isEmpty())){
-            p.setName(personaInputDto.getName());
-        }
-
-        if(!(personaInputDto.getCompany_email() == null || personaInputDto.getCompany_email().isEmpty())){
-            p.setCompany_email(personaInputDto.getCompany_email());
-        }
-
-        if(!(personaInputDto.getPersonal_email() == null || personaInputDto.getPersonal_email().isEmpty())){
-            p.setPersonal_email(personaInputDto.getPersonal_email());
-        }
-
-        if(!(personaInputDto.getCity() == null || personaInputDto.getCity().isEmpty())){
-            p.setCity(personaInputDto.getCity());
-        }
-
-        personaRepository.save(p);
-        return mapper.personaToPersonaOutputDto(p);*/
-
         int id = personaInputDto.getId_persona();
         Persona p = personaRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("No se ha encontrado a la persona con Id: " + id)
@@ -180,5 +155,20 @@ public class PersonaServiceImpl implements PersonaService {
         personaInputDto.setActive(true);
 
         return personaInputDto;
+    }
+
+    private void eliminarRelacionesPersona(Persona persona){
+        if(persona.getStudent() != null){
+            Student student = persona.getStudent();
+            studentRepository.delete(student);
+        }
+        if(persona.getProfesor() != null){
+            Profesor profesor = persona.getProfesor();
+            for(Student s : profesor.getStudents()){
+                s.setProfesor(null);
+                studentRepository.save(s);
+            }
+            profesorRepository.delete(profesor);
+        }
     }
 }

@@ -11,4 +11,6 @@ public interface AsignaturaService {
     public Iterable<AsignaturaOutputDto> getAsignaturasFromStudent(Integer student_id);
 
     public void addStudentToAsignatura(int asignatura_id, int student_id);
+
+    public void deleteById(Integer asignatura_id);
 }

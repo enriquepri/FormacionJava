@@ -29,11 +29,6 @@ public class AsignaturaServiceImpl implements AsignaturaService {
             throw new UnprocessableEntityException("Ya existe una asignatura con el nombre: "
                     + asignaturaInputDto.getNombre());
 
-        comprobar = asignaturaRepository.findById(asignaturaInputDto.getId());
-        if (comprobar.isPresent())
-            throw new UnprocessableEntityException("Ya existe una asignatura con la id: "
-                    + asignaturaInputDto.getId());
-
         Asignatura asignatura = new Asignatura(asignaturaInputDto);
         return asignaturaRepository.save(asignatura).asignaturaToAsignaturaOutputDto();
     }
@@ -68,5 +63,21 @@ public class AsignaturaServiceImpl implements AsignaturaService {
 
         student.getAsignaturas().add(asignatura);
         studentRepository.save(student);
+    }
+
+    @Override
+    public void deleteById(Integer asignatura_id) {
+        Asignatura asignaturaBorrar = asignaturaRepository.findById(asignatura_id).orElseThrow(
+                () -> new EntityNotFoundException("No hay asignatura con la id: " + asignatura_id)
+        );
+
+        if(!asignaturaBorrar.getStudents().isEmpty()){
+            for(Student s : asignaturaBorrar.getStudents()){
+                s.getAsignaturas().remove(asignaturaBorrar);
+                //studentRepository.save(s);
+            }
+        }
+
+        asignaturaRepository.delete(asignaturaBorrar);
     }
 }

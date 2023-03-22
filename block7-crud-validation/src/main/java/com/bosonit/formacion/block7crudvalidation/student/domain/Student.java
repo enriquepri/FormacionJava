@@ -29,7 +29,7 @@ public class Student {
     @JoinColumn(name = "id_profesor")
     private Profesor profesor;
     private String branch;
-    @OneToMany(mappedBy = "student")
+    @ManyToMany
     Set<Asignatura> asignaturas;
 
     public Student(StudentInputDto studentInputDto){

@@ -12,18 +12,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class AsignaturaOutputDto {
     Integer id;
-    String asignatura;
+    String nombre;
     String comments;
-    Date initial_date;
-    Date finish_date;
-    Integer id_student;
+    //Date initial_date;
+    //Date finish_date;
 
-    public AsignaturaOutputDto(Asignatura asignatura){
+    public AsignaturaOutputDto(Asignatura asignatura) {
         this.id = asignatura.getId();
-        this.asignatura = asignatura.getAsignatura();
+        this.nombre = asignatura.getNombre();
         this.comments = asignatura.getComments();
-        this.initial_date = asignatura.getInitial_date();
-        this.finish_date = asignatura.getFinish_date();
-        this.id_student = asignatura.getStudent().getId();
+        //this.initial_date = asignatura.getInitial_date();
+        //this.finish_date = asignatura.getFinish_date();
     }
 }

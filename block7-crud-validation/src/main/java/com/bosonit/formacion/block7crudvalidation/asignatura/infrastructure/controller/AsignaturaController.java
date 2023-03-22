@@ -23,7 +23,7 @@ public class AsignaturaController {
     }
 
     @GetMapping("/getAll")
-    public ResponseEntity<Iterable<AsignaturaOutputDto>> getAllAsignaturas(){
+    public ResponseEntity<Iterable<AsignaturaOutputDto>> getAllAsignaturas() {
         return ResponseEntity.ok().body(
                 asignaturaService.getAllAsignaturas()
         );
@@ -32,9 +32,18 @@ public class AsignaturaController {
     @GetMapping("/get/{id_student}")
     public ResponseEntity<Iterable<AsignaturaOutputDto>> getAsignaturasFromStudent(
             @PathVariable Integer id_student
-    ){
+    ) {
         return ResponseEntity.ok().body(
                 asignaturaService.getAsignaturasFromStudent(id_student)
         );
+    }
+
+    @PostMapping("/addStudent")
+    public ResponseEntity<String> addStudentToAsignatura(
+            @RequestParam Integer asignatura_id,
+            @RequestParam Integer student_id
+    ) {
+        asignaturaService.addStudentToAsignatura(asignatura_id, student_id);
+        return ResponseEntity.ok("Estudiante añadido correctamente");
     }
 }

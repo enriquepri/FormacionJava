@@ -5,6 +5,7 @@ import com.bosonit.formacion.block7crudvalidation.asignatura.infrastructure.cont
 import com.bosonit.formacion.block7crudvalidation.asignatura.infrastructure.controller.dto.AsignaturaOutputDto;
 import com.bosonit.formacion.block7crudvalidation.asignatura.infrastructure.repository.AsignaturaRepository;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
+import com.bosonit.formacion.block7crudvalidation.exception.UnprocessableEntityException;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class AsignaturaServiceImpl implements AsignaturaService {
@@ -22,17 +24,17 @@ public class AsignaturaServiceImpl implements AsignaturaService {
 
     @Override
     public AsignaturaOutputDto addAsignatura(AsignaturaInputDto asignaturaInputDto) {
-        Student student = studentRepository.findById(asignaturaInputDto.getId_alumno()).orElseThrow(
-                () -> new EntityNotFoundException("No existe alumno con id: " + asignaturaInputDto.getId_alumno())
-        );
+        Optional<Asignatura> comprobar = asignaturaRepository.findByNombre(asignaturaInputDto.getNombre());
+        if (comprobar.isPresent())
+            throw new UnprocessableEntityException("Ya existe una asignatura con el nombre: "
+                    + asignaturaInputDto.getNombre());
+
+        comprobar = asignaturaRepository.findById(asignaturaInputDto.getId());
+        if (comprobar.isPresent())
+            throw new UnprocessableEntityException("Ya existe una asignatura con la id: "
+                    + asignaturaInputDto.getId());
 
         Asignatura asignatura = new Asignatura(asignaturaInputDto);
-        asignatura.setStudent(student);
-        asignatura.setInitial_date(new Date());
-        //Falta añadir la finish date
-        student.getAsignaturas().add(asignatura);
-
-        studentRepository.save(student);
         return asignaturaRepository.save(asignatura).asignaturaToAsignaturaOutputDto();
     }
 
@@ -49,9 +51,22 @@ public class AsignaturaServiceImpl implements AsignaturaService {
                 () -> new EntityNotFoundException("No existe alumno con id: " + student_id)
         );
 
-        return asignaturaRepository.findAll().stream()
-                .filter(asignatura -> asignatura.getStudent() == student)
+        return student.getAsignaturas().stream()
                 .map(Asignatura::asignaturaToAsignaturaOutputDto)
                 .toList();
+    }
+
+    @Override
+    public void addStudentToAsignatura(int asignatura_id, int student_id) {
+        Asignatura asignatura = asignaturaRepository.findById(asignatura_id).orElseThrow(
+                () -> new EntityNotFoundException("No existe asignatura con la id: " + asignatura_id)
+        );
+
+        Student student = studentRepository.findById(student_id).orElseThrow(
+                () -> new EntityNotFoundException("No existe alumno con id: " + student_id)
+        );
+
+        student.getAsignaturas().add(asignatura);
+        studentRepository.save(student);
     }
 }

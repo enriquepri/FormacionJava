@@ -9,7 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,21 +20,20 @@ public class Asignatura {
     @Id
     @GeneratedValue
     Integer id;
-    String asignatura;
+    String nombre;
     String comments;
-    Date initial_date;
-    Date finish_date;
-    @ManyToOne
-    @JoinColumn(name = "id_alumno")
-    Student student;
+    //Date initial_date;
+    //Date finish_date;
+    @ManyToMany(mappedBy = "asignaturas")
+    Set<Student> students;
 
-    public Asignatura(AsignaturaInputDto asignaturaInputDto){
+    public Asignatura(AsignaturaInputDto asignaturaInputDto) {
         this.id = asignaturaInputDto.getId();
-        this.asignatura = asignaturaInputDto.getAsignatura();
+        this.nombre = asignaturaInputDto.getNombre();
         this.comments = asignaturaInputDto.getComments();
     }
 
-    public AsignaturaOutputDto asignaturaToAsignaturaOutputDto(){
+    public AsignaturaOutputDto asignaturaToAsignaturaOutputDto() {
         return new AsignaturaOutputDto(this);
     }
 }

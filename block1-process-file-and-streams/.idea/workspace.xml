@@ -5,15 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1dc21d4-f4d8-43eb-8b2e-046ddf4af1bd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../block7-crud/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/application/PersonaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorDelete.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorDelete.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorGet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorGet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPost.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPost.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPut.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/controller/ControladorPut.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/domain/Persona.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/java/com/bosonit/formacion/block7crud/domain/Persona.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../block7-crud/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/application/AsignaturaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/application/AsignaturaServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/domain/Asignatura.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/infrastructure/controller/AsignaturaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/infrastructure/controller/dto/AsignaturaInputDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/infrastructure/controller/dto/AsignaturaOutputDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/asignatura/infrastructure/repository/AsignaturaRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/student/domain/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/../block7-crud-validation/src/main/java/com/bosonit/formacion/block7crudvalidation/student/domain/Student.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,16 +45,16 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Projects/java/formacion/FormacionJava/block1-process-file-and-streams",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/java/formacion/FormacionJava/block7-crud-validation&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

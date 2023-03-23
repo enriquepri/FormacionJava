@@ -11,6 +11,7 @@ import com.bosonit.formacion.block7crudvalidation.student.infrastructure.reposit
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -52,16 +53,26 @@ public class AsignaturaServiceImpl implements AsignaturaService {
     }
 
     @Override
-    public void addStudentToAsignatura(int asignatura_id, int student_id) {
-        Asignatura asignatura = asignaturaRepository.findById(asignatura_id).orElseThrow(
-                () -> new EntityNotFoundException("No existe asignatura con la id: " + asignatura_id)
-        );
-
+    public void addStudentToAsignatura(List<Integer> asignaturas_ids, int student_id) {
         Student student = studentRepository.findById(student_id).orElseThrow(
                 () -> new EntityNotFoundException("No existe alumno con id: " + student_id)
         );
 
-        student.getAsignaturas().add(asignatura);
+        List<Asignatura> listaAgregar = new ArrayList<>();
+        for (Integer i : asignaturas_ids) {
+            if(i == null){
+                throw new UnprocessableEntityException("Valor de asignaturas no valido");
+            }
+            listaAgregar.add(asignaturaRepository.findById(i).orElseThrow(
+                            () -> new EntityNotFoundException("No existe asignatura con la id: " + i)
+                    )
+            );
+        }
+
+        for (Asignatura asignatura : listaAgregar) {
+            student.getAsignaturas().add(asignatura);
+        }
+
         studentRepository.save(student);
     }
 
@@ -93,5 +104,24 @@ public class AsignaturaServiceImpl implements AsignaturaService {
             asignatura.setComments(asignaturaInputDto.getComments());
 
         return asignaturaRepository.save(asignatura).asignaturaToAsignaturaOutputDto();
+    }
+
+    @Override
+    public void removeAsignaturasFromStudent(List<Integer> asignaturas_ids, int student_id) {
+        Student student = studentRepository.findById(student_id).orElseThrow(
+                () -> new EntityNotFoundException("No hay estudiante con el id: " + student_id)
+        );
+
+        for(Integer i : asignaturas_ids){
+            if(i == null) continue;
+            Asignatura asignaturaQuitar = asignaturaRepository.findById(i).orElseThrow(
+                    () -> new EntityNotFoundException("No hay asignatura con el id: " + i)
+            );
+
+            if(student.getAsignaturas().contains(asignaturaQuitar))
+                student.getAsignaturas().remove(asignaturaQuitar);
+        }
+
+        studentRepository.save(student);
     }
 }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/asignatura")
 public class AsignaturaController {
@@ -40,17 +42,17 @@ public class AsignaturaController {
 
     @PostMapping("/addStudent")
     public ResponseEntity<String> addStudentToAsignatura(
-            @RequestParam Integer asignatura_id,
+            @RequestParam List<Integer> asignaturas_ids,
             @RequestParam Integer student_id
     ) {
-        asignaturaService.addStudentToAsignatura(asignatura_id, student_id);
+        asignaturaService.addStudentToAsignatura(asignaturas_ids, student_id);
         return ResponseEntity.ok("Estudiante añadido correctamente");
     }
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteById(
             @PathVariable Integer id
-    ){
+    ) {
         asignaturaService.deleteById(id);
         return ResponseEntity.ok("Asignatura eliminada");
     }
@@ -58,7 +60,16 @@ public class AsignaturaController {
     @PutMapping("/update")
     public ResponseEntity<AsignaturaOutputDto> updateAsignatura(
             @RequestBody AsignaturaInputDto asignaturaInputDto
-    ){
+    ) {
         return ResponseEntity.ok().body(asignaturaService.updateAsignatura(asignaturaInputDto));
+    }
+
+    @PutMapping("/remove")
+    public ResponseEntity<String> removeAsignaturasFromStudent(
+            @RequestParam Integer student_id,
+            @RequestParam List<Integer> asignaturas_ids
+    ) {
+        asignaturaService.removeAsignaturasFromStudent(asignaturas_ids, student_id);
+        return ResponseEntity.ok().body("Asignaturas eliminadas");
     }
 }

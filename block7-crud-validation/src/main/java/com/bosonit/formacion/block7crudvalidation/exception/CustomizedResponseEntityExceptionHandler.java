@@ -8,6 +8,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.util.Date;
+//http://www.profesor-p.com/2018/11/20/personalizar-codigo-http-en-spring-boot/
 
 @RestControllerAdvice
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {

@@ -66,4 +66,19 @@ public class StudentServiceImpl implements StudentService {
         );
         studentRepository.delete(student);
     }
+
+    @Override
+    public StudentOutputDto updateStudent(StudentInputDto studentInputDto) {
+        Student student = studentRepository.findById(studentInputDto.getId()).orElseThrow(
+                () -> new EntityNotFoundException("No existe estudiante con la id: " + studentInputDto.getPersona_id())
+        );
+
+        if (studentInputDto.getBranch() != null && !studentInputDto.getBranch().isEmpty())
+            student.setBranch(studentInputDto.getBranch());
+        if (studentInputDto.getComments() != null && !studentInputDto.getComments().isEmpty())
+            student.setComments(studentInputDto.getComments());
+        if (studentInputDto.getNum_hours_week() > 0) student.setNum_hours_week(studentInputDto.getNum_hours_week());
+
+        return studentRepository.save(student).studentToStudentOutputDto();
+    }
 }

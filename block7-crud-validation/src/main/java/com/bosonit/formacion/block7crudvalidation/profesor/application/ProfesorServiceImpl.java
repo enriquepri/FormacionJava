@@ -90,10 +90,24 @@ public class ProfesorServiceImpl implements ProfesorService {
         if(!profesor.getStudents().isEmpty()){
             for(Student s : profesor.getStudents()){
                 s.setProfesor(null);
-                studentRepository.save(s);
+                //studentRepository.save(s);
             }
         }
 
         profesorRepository.delete(profesor);
+    }
+
+    @Override
+    public ProfesorOutputDto updateProfesor(ProfesorInputDto profesorInputDto) {
+        Profesor profesor = profesorRepository.findById(profesorInputDto.getId()).orElseThrow(
+                () -> new EntityNotFoundException("No existe profesor con el id: " + profesorInputDto.getId())
+        );
+
+        if(profesorInputDto.getComments()!=null && !profesorInputDto.getComments().isEmpty())
+            profesor.setComments(profesorInputDto.getComments());
+        if(profesorInputDto.getBranch()!=null && !profesorInputDto.getBranch().isEmpty())
+            profesor.setBranch(profesorInputDto.getBranch());
+
+        return profesorRepository.save(profesor).profesorToProfesorOutputDto();
     }
 }

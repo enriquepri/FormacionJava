@@ -71,13 +71,27 @@ public class AsignaturaServiceImpl implements AsignaturaService {
                 () -> new EntityNotFoundException("No hay asignatura con la id: " + asignatura_id)
         );
 
-        if(!asignaturaBorrar.getStudents().isEmpty()){
-            for(Student s : asignaturaBorrar.getStudents()){
+        if (!asignaturaBorrar.getStudents().isEmpty()) {
+            for (Student s : asignaturaBorrar.getStudents()) {
                 s.getAsignaturas().remove(asignaturaBorrar);
                 //studentRepository.save(s);
             }
         }
 
         asignaturaRepository.delete(asignaturaBorrar);
+    }
+
+    @Override
+    public AsignaturaOutputDto updateAsignatura(AsignaturaInputDto asignaturaInputDto) {
+        Asignatura asignatura = asignaturaRepository.findById(asignaturaInputDto.getId()).orElseThrow(
+                () -> new EntityNotFoundException("No existe la asignatura con id: " + asignaturaInputDto.getId())
+        );
+
+        if (asignaturaInputDto.getNombre() != null && !asignaturaInputDto.getNombre().isEmpty())
+            asignatura.setNombre(asignaturaInputDto.getNombre());
+        if (asignaturaInputDto.getComments() != null && !asignaturaInputDto.getComments().isEmpty())
+            asignatura.setComments(asignaturaInputDto.getComments());
+
+        return asignaturaRepository.save(asignatura).asignaturaToAsignaturaOutputDto();
     }
 }

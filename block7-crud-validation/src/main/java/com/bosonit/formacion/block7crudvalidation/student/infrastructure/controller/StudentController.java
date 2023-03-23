@@ -38,4 +38,11 @@ public class StudentController {
         studentService.deleteStudentById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body("Student eliminado");
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<StudentOutputDto> updateStudent(
+            @RequestBody StudentInputDto studentInputDto
+    ){
+        return ResponseEntity.ok().body(studentService.updateStudent(studentInputDto));
+    }
 }

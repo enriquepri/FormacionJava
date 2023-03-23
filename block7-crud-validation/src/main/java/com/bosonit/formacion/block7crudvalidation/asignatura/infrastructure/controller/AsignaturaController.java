@@ -54,4 +54,11 @@ public class AsignaturaController {
         asignaturaService.deleteById(id);
         return ResponseEntity.ok("Asignatura eliminada");
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<AsignaturaOutputDto> updateAsignatura(
+            @RequestBody AsignaturaInputDto asignaturaInputDto
+    ){
+        return ResponseEntity.ok().body(asignaturaService.updateAsignatura(asignaturaInputDto));
+    }
 }

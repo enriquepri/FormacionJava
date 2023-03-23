@@ -51,4 +51,11 @@ public class ProfesorController {
         profesorService.deleteProfesorById(id);
         return ResponseEntity.ok("Profesor eliminado");
     }
+
+    @PutMapping("/update")
+    public ResponseEntity<ProfesorOutputDto> updateProfesor(
+            @RequestBody ProfesorInputDto profesorInputDto
+    ){
+        return ResponseEntity.ok().body(profesorService.updateProfesor(profesorInputDto));
+    }
 }

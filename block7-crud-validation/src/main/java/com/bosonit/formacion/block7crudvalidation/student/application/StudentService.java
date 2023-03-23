@@ -9,4 +9,5 @@ public interface StudentService {
     Iterable<StudentOutputDto> getAllStudents();
     StudentOutputDto getStudentById(Integer id, String outputType);
     void deleteStudentById(Integer id);
+    StudentOutputDto updateStudent(StudentInputDto studentInputDto);
 }

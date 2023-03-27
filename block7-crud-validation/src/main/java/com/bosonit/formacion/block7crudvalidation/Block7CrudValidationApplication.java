@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
-//@EnableFeignClients
+@EnableFeignClients
 public class Block7CrudValidationApplication {
 	@Autowired
 	PersonaService personaService;

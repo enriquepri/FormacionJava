@@ -1,6 +1,7 @@
 package com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller;
 
 
+import com.bosonit.formacion.block7crudvalidation.ClienteFeign;
 import com.bosonit.formacion.block7crudvalidation.persona.application.PersonaService;
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaInputDto;
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputDto;
@@ -16,6 +17,9 @@ import org.springframework.web.client.RestTemplate;
 public class Controller {
     @Autowired
     PersonaService personaService;
+
+    @Autowired
+    ClienteFeign clienteFeign;
 
     @PostMapping("/addPersona")
     public ResponseEntity<PersonaOutputDto> addPersona(
@@ -79,5 +83,10 @@ public class Controller {
         if (responseEntity.getStatusCode() == HttpStatus.OK)
             return responseEntity.getBody();
         throw new RuntimeException("The server didn't respond OK");
+    }
+
+    @GetMapping("/feign/{id}")
+    public ProfesorOutputDto callWithFeign(@PathVariable Integer id){
+        return clienteFeign.callServer(id);
     }
 }

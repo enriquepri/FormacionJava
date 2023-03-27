@@ -6,6 +6,7 @@ import com.bosonit.formacion.block7crudvalidation.student.infrastructure.control
 
 public interface ProfesorService {
     ProfesorOutputDto profesorAdd(ProfesorInputDto profesorInputDto);
+    ProfesorOutputDto getProfesor (Integer id);
     Iterable<ProfesorOutputDto> getAllProfesors();
     Iterable<StudentOutputDto> getAllStudentsFromProfesor(int profesor_id);
     void addStudentToProfesor(int profesor_id, int student_id);

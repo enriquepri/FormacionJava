@@ -44,6 +44,13 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
+    public ProfesorOutputDto getProfesor (Integer id){
+        return profesorRepository.findById(id).orElseThrow(
+                () -> new EntityNotFoundException("No hay profesor con la id: " + id)
+        ).profesorToProfesorOutputDto();
+    }
+
+    @Override
     public List<ProfesorOutputDto> getAllProfesors() {
         return profesorRepository.findAll().stream()
                 .map(Profesor::profesorToProfesorOutputDto)

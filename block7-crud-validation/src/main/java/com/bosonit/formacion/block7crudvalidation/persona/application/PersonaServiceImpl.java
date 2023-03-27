@@ -1,7 +1,6 @@
 package com.bosonit.formacion.block7crudvalidation.persona.application;
 
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaInputDto;
-import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaMapper;
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputDto;
 import com.bosonit.formacion.block7crudvalidation.persona.domain.Persona;
 import com.bosonit.formacion.block7crudvalidation.exception.EntityNotFoundException;
@@ -11,7 +10,6 @@ import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
 import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.repository.ProfesorRepository;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
 import com.bosonit.formacion.block7crudvalidation.student.infrastructure.repository.StudentRepository;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

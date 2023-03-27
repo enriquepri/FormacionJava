@@ -4,6 +4,7 @@ import com.bosonit.formacion.block7crudvalidation.profesor.application.ProfesorS
 import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorInputDto;
 import com.bosonit.formacion.block7crudvalidation.profesor.infrastructure.controller.dto.ProfesorOutputDto;
 import com.bosonit.formacion.block7crudvalidation.student.infrastructure.controller.dto.StudentOutputDto;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +29,13 @@ public class ProfesorController {
     ) {
         profesorService.addStudentToProfesor(profesor_id, student_id);
         return ResponseEntity.ok("Añadido estudiante");
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProfesorOutputDto> getProfesorById(
+            @PathVariable Integer id
+    ) {
+        return ResponseEntity.ok().body(profesorService.getProfesor(id));
     }
 
     @GetMapping("/getAllProfesors")
@@ -55,7 +63,7 @@ public class ProfesorController {
     @PutMapping("/update")
     public ResponseEntity<ProfesorOutputDto> updateProfesor(
             @RequestBody ProfesorInputDto profesorInputDto
-    ){
+    ) {
         return ResponseEntity.ok().body(profesorService.updateProfesor(profesorInputDto));
     }
 }

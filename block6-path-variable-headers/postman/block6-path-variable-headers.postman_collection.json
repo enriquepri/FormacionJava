@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "68e34aee-f3d2-4c00-bdf8-af8946bbc5bb",
+		"name": "block6-path-variable-headers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/user/3",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "postPersona",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"edad\": \"28\",\r\n    \"nombre\": \"Juan Luis\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/postPersona",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"postPersona"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "putPost",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/post?var1=14&var2=28",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"post"
+					],
+					"query": [
+						{
+							"key": "var1",
+							"value": "14"
+						},
+						{
+							"key": "var2",
+							"value": "28"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

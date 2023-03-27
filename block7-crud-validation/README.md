@@ -30,16 +30,18 @@ EI ID autoincremental se puede hacer con estas simples instrucciones:
 private int id;  
 
 Poner 3  endpoints en la búsqueda.  
-Buscar por ID  
-Buscar por nombre de usuario (campo usuario)  
-Mostrar todos los registros.  
+- Buscar por ID  
+- Buscar por nombre de usuario (campo usuario)  
+- Mostrar todos los registros.  
+
 Usar DTOS, interfaces y clases de servicio.  
 
 Nota: No es necesario crear la carpeta repository. Para hacer más simple el ejercicio se pueden poner todos los servicios en application.  
 ## Parte 2 - Crear excepciones  
 Crear dos tipos de excepción al CRUD anteriormente realizado:  
-EntityNotFoundException que generará un código HTTP 404. Se lanzará cuando no se encuentren registros en un findById o si al borrar o modificar un registro este no existe.  
-UnprocessableEntityException que devolverá un 422 (UNPROCESSABLE ENTITY) cuando la validación de los campos no cumpla los requisitos establecidos, al modificar o insertar un registro.  
+- EntityNotFoundException que generará un código HTTP 404. Se lanzará cuando no se encuentren registros en un findById o si al borrar o modificar un registro este no existe.  
+- UnprocessableEntityException que devolverá un 422 (UNPROCESSABLE ENTITY) cuando la validación de los campos no cumpla los requisitos establecidos, al modificar o insertar un registro.  
+
 Ambas excepciones deberán devolver un objeto llamado CustomError con los campos:  
 Date timestamp;  
 Int HttpCode;  

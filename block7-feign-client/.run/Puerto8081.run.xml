@@ -1,0 +1,12 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Puerto8081" type="Application" factoryName="Application">
+    <envs>
+      <env name="server.port" value="8081" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.block7feignclient.Block7FeignClientApplication" />
+    <module name="block7-feign-client" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

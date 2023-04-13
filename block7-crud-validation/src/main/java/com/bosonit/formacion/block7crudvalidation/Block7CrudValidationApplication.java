@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableFeignClients
@@ -18,6 +21,18 @@ public class Block7CrudValidationApplication {
 		SpringApplication.run(Block7CrudValidationApplication.class, args);
 	}
 
+	//Seccion para ejercicio bloque 11 - CORS
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/getall").allowedOrigins("*");
+			}
+		};
+	}
+
+	//Para crear una serie de personas cada vez que arranque la aplicacion
 	@PostConstruct
 	public void postConstruct(){
 		for(int i = 1; i <= 10; i++){

@@ -1,8 +1,9 @@
-# CRUD con validación
+# CRUD CON VALIDACION (Bloque 7) Y CORS (Bloque 11)
+## CRUD con validación
 Nombre proyecto Maven: block7-crud-validation
 Tiempo estimado: 8 horas parte 1 + 4 horas parte 2 + 8 horas parte 3.  
 Realizar commit al acabar cada apartado del ejercicio.  
-## Parte 1 - Crear CRUD de tabla Persona  
+### Parte 1 - Crear CRUD de tabla Persona  
 Siendo ahora la tabla persona con la siguiente definición:
 
 table persona  
@@ -37,7 +38,7 @@ Poner 3  endpoints en la búsqueda.
 Usar DTOS, interfaces y clases de servicio.  
 
 Nota: No es necesario crear la carpeta repository. Para hacer más simple el ejercicio se pueden poner todos los servicios en application.  
-## Parte 2 - Crear excepciones  
+### Parte 2 - Crear excepciones  
 Crear dos tipos de excepción al CRUD anteriormente realizado:  
 - EntityNotFoundException que generará un código HTTP 404. Se lanzará cuando no se encuentren registros en un findById o si al borrar o modificar un registro este no existe.  
 - UnprocessableEntityException que devolverá un 422 (UNPROCESSABLE ENTITY) cuando la validación de los campos no cumpla los requisitos establecidos, al modificar o insertar un registro.  
@@ -46,7 +47,7 @@ Ambas excepciones deberán devolver un objeto llamado CustomError con los campos
 Date timestamp;  
 Int HttpCode;  
 String mensaje; // Devolverá el mensaje de error.  
-## Parte 3 - Relaciones entre entidades  
+### Parte 3 - Relaciones entre entidades  
 Añadir las siguientes tablas:  
 table student  
 {  
@@ -157,7 +158,7 @@ En TODOS los endpoints de búsqueda de la entidad persona (por ID, por nombre o 
 Crear endpoint en ‘estudiante_asignatura’ que permita buscar por id de estudiante. Este endpoint sacará todas las asignaturas que tiene un estudiante.  
 Realizar chequeos lógicos: ¿Borrar persona si tiene un estudiante/profesor asignado? ¿Borrar asignatura si tiene estudiantes asignados?  
 Realizar endpoints de estudiante para asignarle una o más asignaturas. Crear otro endpoint para desasignar una o más asignaturas (deberá poder recibir una lista de IDs de asignaturas).  
-## Parte 4 - Feign  
+### Parte 4 - Feign  
 En el CRUD anteriormente realizado incluir en la entidad Persona el siguiente endpoint.  
 @RestControler(“/profesor/{id})  
 ProfesorOutputDto GET getProfesor(@PathVariable int id)  
@@ -166,3 +167,26 @@ Este endpoint deberá llamar al de la entidad profesor que devuelve el profesor 
 Usando  Feign:  
 Crear la llamada anterior usando  feign.  
 Para hacer la prueba deberemos tener dos instancias de nuestro programa lanzado. Una corriendo en el puerto 8080 y otra en el puerto 8081. La prueba consistirá en llamar a GET localhost:8080/persona/profesor/1 y que ésta llamada llame a localhost:8081/profesor/1 devolviéndonos los datos del profesor.  
+
+## CORS
+Nombre proyecto Maven: block7-crud-validation (hay que modificar el proyecto existente)  
+Tiempo estimado: 2 horas.  
+Permitir realizar peticiones entre dominios modificando el módulo del ejercicio CRUD con validación para la ruta ‘/person’.  
+Para probar ir a la página: https://codepen.io/de4imo/pen/VwMRENP .  
+Actualizar el back para que funcionen estas llamadas:  
+Alta: Tipo. POST -  Ruta: http://localhost:8080/addperson    
+Objeto mandado:  
+- 'usuario': document.getElementById('username').value, (Yo lo he modificado a mano la peticion en la pagina a username dada mi implementacion)
+- 'password': document.getElementById('passwd').value,
+- 'name': document.getElementById('name').value,
+- 'surname': document.getElementById('surname').value,
+- 'company_email': document.getElementById('emailcomp').value,
+- 'personal_email': document.getElementById('emailpers').value,
+- 'city': document.getElementById('city').value,
+- 'active': document.getElementById('active').checked,
+- 'created_date': document.getElementById('created_date').value,
+- 'imagen_url': document.getElementById('imagen_url').value,
+- 'termination_date': document.getElementById('finish_date').value,
+  
+Consulta: http://localhost:8080/getall
+List<Person> (Mismos campos que en el add)

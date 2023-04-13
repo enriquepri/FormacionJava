@@ -149,8 +149,8 @@ public class PersonaServiceImpl implements PersonaService {
             throw new UnprocessableEntityException("City no puede estar vacio");
         }
 
-        personaInputDto.setCreated_date(new Date());
-        personaInputDto.setActive(true);
+        //personaInputDto.setCreated_date(new Date());
+        //personaInputDto.setActive(true);
 
         return personaInputDto;
     }

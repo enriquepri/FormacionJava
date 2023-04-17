@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "dfe1f103-8170-42a8-9ab9-4abe62f15c61",
+		"name": "block11-upload-download-files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "addFichero",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Projects/java/formacion/FormacionJava/block11-upload-download-files/prueba.txt"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/fichero",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fichero"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/fichero/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fichero",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFicheroRedirect",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/enriquejose.priego/Downloads/Guía Plataforma Binaia Education (003).pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/ficheroRedirect",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ficheroRedirect"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

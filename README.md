@@ -2,11 +2,11 @@
 
 ## Autor Enrique Priego
 
-Conjunto de Ejercicios de la formacion de backend con Java y Spring de Bosonit
+Conjunto de Ejercicios de la formación de backend con Java y Spring de Bosonit
 
 Dentro de la carpeta de cada ejercicio podemos encontrar:
 
-- Archivo formato Markdown con descripción del ejecicio
+- Archivo formato Markdown con descripción del ejercicio
 - Código fuente del ejercicio
 - Archivos extra que puedan ser útiles/necesario (Run configuration de IntelliJ, Archivos de colecciones de Postman etc) 
 
@@ -21,3 +21,4 @@ Dentro de la carpeta de cada ejercicio podemos encontrar:
 - Bloque 8 | Testing con JUnit (Básico)
 - Bloque 9 | Linux
 - Bloque 10 | Docker
+- Bloque 11 | Bloque 11 | Spring Web (Avanzado) 

@@ -1,0 +1,14 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="RunConfiguration" type="Application" factoryName="Application">
+    <envs>
+      <env name="topicname" value="uno" />
+      <env name="topicname2" value="dos" />
+      <env name="groupid" value="myGroup" />
+    </envs>
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.block12kafkaapp1.Block12KafkaApp1Application" />
+    <module name="block12-kafka-app1" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

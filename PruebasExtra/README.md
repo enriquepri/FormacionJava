@@ -4,3 +4,4 @@ En esta carpeta voy a recopilar programas realizados durante la realización de 
 
 ### Lista de programas incluidos
 - Prueba de como cambiar la fuente de la base de datos en tiempo de ejecución con docker. (CambiarFuenteDocker)
+- Prueba de utilización docker compose (DockerCompose)

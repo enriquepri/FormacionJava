@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "95baf514-f644-45c3-9a48-761a673dcbdd",
+		"name": "block13-criteria-builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAll",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/cb/getAll?tamPag=2&numPag=1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cb",
+						"getAll"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Pepe",
+							"disabled": true
+						},
+						{
+							"key": "username",
+							"value": "juan",
+							"disabled": true
+						},
+						{
+							"key": "surname",
+							"value": "Alberto",
+							"disabled": true
+						},
+						{
+							"key": "order",
+							"value": "name",
+							"disabled": true
+						},
+						{
+							"key": "date",
+							"value": "25-04-2022",
+							"disabled": true
+						},
+						{
+							"key": "dateCondition",
+							"value": "greater",
+							"disabled": true
+						},
+						{
+							"key": "tamPag",
+							"value": "2"
+						},
+						{
+							"key": "numPag",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -34,6 +34,7 @@ public class PersonaServiceImpl implements PersonaService {
                     ("Ya existe una persona con usuario: " + personaInputDto.getUsername()));
         }
         personaInputDto = validacion(personaInputDto);
+        personaInputDto.setCreated_date(new Date());
         Persona persona = personaRepository.save(new Persona(personaInputDto));
         return persona.personaToPersonaOutputDto();
     }

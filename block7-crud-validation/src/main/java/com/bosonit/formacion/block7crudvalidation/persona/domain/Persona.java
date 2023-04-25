@@ -6,10 +6,7 @@ import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.control
 import com.bosonit.formacion.block7crudvalidation.persona.infrastructure.controller.dto.PersonaOutputStudentDto;
 import com.bosonit.formacion.block7crudvalidation.profesor.domain.Profesor;
 import com.bosonit.formacion.block7crudvalidation.student.domain.Student;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,8 +29,10 @@ public class Persona {
     String personal_email;
     String city;
     boolean active;
+    @Temporal(TemporalType.DATE)
     Date created_date;
     String imagen_url;
+    @Temporal(TemporalType.DATE)
     Date termination_date;
 
     @OneToOne(mappedBy = "persona")

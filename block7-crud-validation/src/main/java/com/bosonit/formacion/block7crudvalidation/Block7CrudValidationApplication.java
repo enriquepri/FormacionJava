@@ -39,8 +39,8 @@ public class Block7CrudValidationApplication {
 			PersonaInputDto p = new PersonaInputDto(
 					"username" + i,
 					"password",
-					"name",
-					"surname",
+					"name" + (10-i),
+					"surname" + i,
 					"company_email",
 					"personal_email",
 					"city",
@@ -49,5 +49,35 @@ public class Block7CrudValidationApplication {
 
 			personaService.addPersona(p);
 		}
+	}
+
+	//Creo algunas personas concretas para pruebas criteria builder
+	@PostConstruct
+	public void personasCB(){
+		PersonaInputDto p = new PersonaInputDto(
+				"pepito23",
+				"password",
+				"Pepe",
+				"Hernandez",
+				"company_email",
+				"personal_email",
+				"city",
+				"imagen_url"
+		);
+
+		personaService.addPersona(p);
+
+		p = new PersonaInputDto(
+				"XjuanitoX",
+				"password",
+				"Juan",
+				"Alberto",
+				"company_email",
+				"personal_email",
+				"city",
+				"imagen_url"
+		);
+
+		personaService.addPersona(p);
 	}
 }

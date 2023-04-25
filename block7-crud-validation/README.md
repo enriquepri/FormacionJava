@@ -1,4 +1,4 @@
-# CRUD CON VALIDACION (Bloque 7) Y CORS (Bloque 11)
+# CRUD CON VALIDACION (Bloque 7) , CORS (Bloque 11) , CRITERIA BUILDER (Bloque 13)
 ## CRUD con validación
 Nombre proyecto Maven: block7-crud-validation
 Tiempo estimado: 8 horas parte 1 + 4 horas parte 2 + 8 horas parte 3.  
@@ -190,3 +190,13 @@ Objeto mandado:
   
 Consulta: http://localhost:8080/getall
 List<Person> (Mismos campos que en el add)
+
+## CRITERIA BUILDER
+Nombre proyecto Maven: block7-crud-validation (hay que modificar el proyecto existente)  
+1) Sobre el ejercicio Crear endpoint que permita buscar aquellas personas cuyo  ‘user’, ‘name’, ‘surname‘ o ‘fecha creación’ superior a una dada y/o inferior a una dada. Incluir otro campo que indicará si se quiere ordenar el resultado por ‘user’ o ‘name’. Tener en cuenta que cualquiera de esos campos puede ser mandados, pero ninguno es obligatorio. 
+2) Incluir paginación. Es decir que se pueda mostrar N elementos a partir de la página dada. Así si se define que el tamaño de la página es 10 y que se quiere mostrar la página 1, se mostrará del registro 11 al 20 (ambos inclusive). Por defecto el tamaño de la página será 10 y el número de página será obligatorio mandarlo.
+
+Enlaces útiles:
+- [Profesor p - Querys avanzadas con JPA en spring boot](http://www.profesor-p.com/2019/02/14/querys-avanzadas-con-jpa-en-spring-boot/)
+- [Baledung - JPA Pagination](https://www.baeldung.com/jpa-pagination)
+

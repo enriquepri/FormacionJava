@@ -12,4 +12,5 @@ public interface FacturaService {
     FacturaOutputDto addFactura(FacturaInputDto facturaInputDto, List<LineaInputDto> lineas);
     List<FacturaOutputDto> getAllFacturas();
     void deleteFactura(Integer idFactura);
+    FacturaOutputDto addLinea(Integer idFactura, LineaInputDto lineaInputDto);
 }

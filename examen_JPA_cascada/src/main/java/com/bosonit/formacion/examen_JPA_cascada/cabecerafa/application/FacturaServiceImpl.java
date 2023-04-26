@@ -60,4 +60,18 @@ public class FacturaServiceImpl implements FacturaService{
 
         facturaRepository.delete(aBorrar);
     }
+
+    @Override
+    public FacturaOutputDto addLinea(Integer idFactura, LineaInputDto lineaInputDto) {
+        Factura f = facturaRepository.findById(idFactura).orElseThrow(
+                () -> new EntityNotFoundException("No se encuentra factura con la id: " + idFactura)
+        );
+
+        Linea lineaGuardar = new Linea(lineaInputDto);
+        lineaGuardar.setFactura(f);
+        f.getLineas().add(lineaGuardar);
+        f.setImporteFa(f.getImporteFa() + (lineaGuardar.getCantidad() * lineaGuardar.getPrecio()));
+
+        return facturaRepository.save(f).facturaToFacturaOutputDto();
+    }
 }

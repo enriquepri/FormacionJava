@@ -22,7 +22,7 @@ public class Cliente {
     Integer id;
     @Column(nullable = false, length = 100)
     String nombre;
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE)
     Set<Factura> facturas;
 
     public Cliente(ClienteInputDto clienteInputDto){

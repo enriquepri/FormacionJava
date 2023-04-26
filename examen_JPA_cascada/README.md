@@ -36,16 +36,16 @@ Tiempo máximo para hacerlo: El doble del que le haya llevado al primer estudian
 
 ### Endpoints
 
-3. GET /factura. Buscar todas las facturas. Devolverá una List de FacturaOutputDto que debe contener estos campos. Siempre devolverá un 200.
-![](/.images/imagen1.png)
-![](/.images/imagen2.png)
-![](/.images/imagen3.png)
+3. GET /factura. Buscar todas las facturas. Devolverá una List de FacturaOutputDto que debe contener estos campos. Siempre devolverá un 200.  
+![](./.images/imagen1.png)  
+![](./.images/imagen2.png)  
+![](./.images/imagen3.png)  
 
 4. DELETE factura /{idFra}. Borrar toda la fra. Deberá borrar con una sola instrucción tanto la cabecera como las lineas. Devolverá un 404 si no encuentra la fra. Un 200 en caso contrario.
 
 
 5. POST factura/linea/{idFra}. Añadir una línea a una fra. ya existente. En el body recibirá un objeto LineaInputDto   
-![](/.images/imagen4.png)
+![](./.images/imagen4.png)  
 Devolverá el objeto FacturaOutputDto con la nueva línea añadida.  
 Si no existe la fra (id no existente) devolver un 404.
 

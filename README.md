@@ -21,4 +21,6 @@ Dentro de la carpeta de cada ejercicio podemos encontrar:
 - Bloque 8 | Testing con JUnit (Básico)
 - Bloque 9 | Linux
 - Bloque 10 | Docker
-- Bloque 11 | Bloque 11 | Spring Web (Avanzado) 
+- Bloque 11 | Spring Web (Avanzado) 
+- Bloque 12 | Mensajeria (Kafka)
+- Bloque 13(Parcial) | Criteria Builder

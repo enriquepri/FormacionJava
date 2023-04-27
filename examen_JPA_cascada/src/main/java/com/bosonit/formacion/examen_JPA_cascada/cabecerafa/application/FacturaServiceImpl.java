@@ -2,13 +2,13 @@ package com.bosonit.formacion.examen_JPA_cascada.cabecerafa.application;
 
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaInputDto;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaOutputDto;
-import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.Factura;
+import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.FacturaEntity;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.repository.FacturaRepository;
-import com.bosonit.formacion.examen_JPA_cascada.cliente.domain.Cliente;
+import com.bosonit.formacion.examen_JPA_cascada.cliente.domain.ClienteEntity;
 import com.bosonit.formacion.examen_JPA_cascada.cliente.repository.ClienteRepository;
 import com.bosonit.formacion.examen_JPA_cascada.exceptions.EntityNotFoundException;
 import com.bosonit.formacion.examen_JPA_cascada.lineafa.controller.dto.LineaInputDto;
-import com.bosonit.formacion.examen_JPA_cascada.lineafa.domain.Linea;
+import com.bosonit.formacion.examen_JPA_cascada.lineafa.domain.LineaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,18 +24,18 @@ public class FacturaServiceImpl implements FacturaService{
 
     @Override
     public FacturaOutputDto addFactura(FacturaInputDto facturaInputDto, List<LineaInputDto> lineas) {
-        Cliente c = clienteRepository.findById(facturaInputDto.getClienteid()).orElseThrow(
+        ClienteEntity c = clienteRepository.findById(facturaInputDto.getClienteid()).orElseThrow(
                 () -> new EntityNotFoundException("No se encuentra al cliente con la id: " + facturaInputDto.getClienteid())
         );
 
-        Factura f = new Factura(facturaInputDto);
+        FacturaEntity f = new FacturaEntity(facturaInputDto);
         f.setCliente(c);
 
         double importeTotal = 0;
 
         for(LineaInputDto l : lineas){
             l.setFactura(f);
-            f.getLineas().add(new Linea(l));
+            f.getLineas().add(new LineaEntity(l));
             importeTotal += l.getPrecio() * l.getCantidad();
         }
 
@@ -48,13 +48,13 @@ public class FacturaServiceImpl implements FacturaService{
     public List<FacturaOutputDto> getAllFacturas() {
         return facturaRepository.findAll()
                 .stream()
-                .map(Factura::facturaToFacturaOutputDto)
+                .map(FacturaEntity::facturaToFacturaOutputDto)
                 .toList();
     }
 
     @Override
     public void deleteFactura(Integer idFactura) {
-        Factura aBorrar = facturaRepository.findById(idFactura).orElseThrow(
+        FacturaEntity aBorrar = facturaRepository.findById(idFactura).orElseThrow(
                 () -> new EntityNotFoundException("No se encuentra factura con la id: " + idFactura)
         );
 
@@ -63,11 +63,11 @@ public class FacturaServiceImpl implements FacturaService{
 
     @Override
     public FacturaOutputDto addLinea(Integer idFactura, LineaInputDto lineaInputDto) {
-        Factura f = facturaRepository.findById(idFactura).orElseThrow(
+        FacturaEntity f = facturaRepository.findById(idFactura).orElseThrow(
                 () -> new EntityNotFoundException("No se encuentra factura con la id: " + idFactura)
         );
 
-        Linea lineaGuardar = new Linea(lineaInputDto);
+        LineaEntity lineaGuardar = new LineaEntity(lineaInputDto);
         lineaGuardar.setFactura(f);
         f.getLineas().add(lineaGuardar);
         f.setImporteFa(f.getImporteFa() + (lineaGuardar.getCantidad() * lineaGuardar.getPrecio()));

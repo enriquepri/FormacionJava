@@ -3,7 +3,6 @@ package com.bosonit.formacion.examen_JPA_cascada.cabecerafa.application;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaInputDto;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaOutputDto;
 import com.bosonit.formacion.examen_JPA_cascada.lineafa.controller.dto.LineaInputDto;
-import com.bosonit.formacion.examen_JPA_cascada.lineafa.domain.Linea;
 
 import java.util.List;
 

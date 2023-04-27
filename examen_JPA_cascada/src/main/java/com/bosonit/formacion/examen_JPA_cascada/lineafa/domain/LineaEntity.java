@@ -1,6 +1,6 @@
 package com.bosonit.formacion.examen_JPA_cascada.lineafa.domain;
 
-import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.Factura;
+import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.FacturaEntity;
 import com.bosonit.formacion.examen_JPA_cascada.lineafa.controller.dto.LineaInputDto;
 import com.bosonit.formacion.examen_JPA_cascada.lineafa.controller.dto.LineaOutputDto;
 import jakarta.persistence.*;
@@ -14,18 +14,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Linea {
+public class LineaEntity {
     @Id
     @GeneratedValue
     Integer id;
     @ManyToOne
     @JoinColumn(name = "IdFra")
-    Factura factura;
+    FacturaEntity factura;
     String proNomb;
     double cantidad;
     double precio;
 
-    public Linea (LineaInputDto lineaInputDto){
+    public LineaEntity(LineaInputDto lineaInputDto){
         this.id = lineaInputDto.getId();
         this.factura = lineaInputDto.getFactura();
         this.proNomb = lineaInputDto.getProNomb();
@@ -33,7 +33,7 @@ public class Linea {
         this.precio = lineaInputDto.getPrecio();
     }
 
-    public Linea(Integer id, String proNomb, double cantidad, double precio) {
+    public LineaEntity(Integer id, String proNomb, double cantidad, double precio) {
         this.id = id;
         this.proNomb = proNomb;
         this.cantidad = cantidad;

@@ -1,10 +1,9 @@
 package com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain;
 
-import ch.qos.logback.core.encoder.ByteArrayUtil;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaInputDto;
 import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.controller.dto.FacturaOutputDto;
-import com.bosonit.formacion.examen_JPA_cascada.cliente.domain.Cliente;
-import com.bosonit.formacion.examen_JPA_cascada.lineafa.domain.Linea;
+import com.bosonit.formacion.examen_JPA_cascada.cliente.domain.ClienteEntity;
+import com.bosonit.formacion.examen_JPA_cascada.lineafa.domain.LineaEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,25 +12,24 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Factura {
+public class FacturaEntity {
     @Id
     @GeneratedValue
     Integer id;
     @ManyToOne
     @JoinColumn(name = "cli_codi")
-    Cliente cliente;
+    ClienteEntity cliente;
     Double importeFa;
-    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL)
-    List<Linea> lineas = new ArrayList<>();
+    @OneToMany(mappedBy = "factura", cascade = CascadeType.ALL, orphanRemoval = true)
+    List<LineaEntity> lineas = new ArrayList<>();
 
-    public Factura (FacturaInputDto facturaInputDto){
+    public FacturaEntity(FacturaInputDto facturaInputDto){
         this.id = facturaInputDto.getId();
         this.importeFa = facturaInputDto.getImporteFa();
     }
@@ -41,7 +39,7 @@ public class Factura {
                 this.id,
                 this.importeFa,
                 this.cliente.clienteToClienteOutputDto(),
-                this.lineas.stream().map(Linea::lineaToLineaOutputDto).toList()
+                this.lineas.stream().map(LineaEntity::lineaToLineaOutputDto).toList()
         );
     }
 }

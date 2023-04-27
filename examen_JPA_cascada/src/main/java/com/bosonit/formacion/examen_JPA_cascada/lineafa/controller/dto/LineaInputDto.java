@@ -1,8 +1,6 @@
 package com.bosonit.formacion.examen_JPA_cascada.lineafa.controller.dto;
 
-import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.Factura;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.FacturaEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LineaInputDto {
     Integer id;
-    Factura factura;
+    FacturaEntity factura;
     String proNomb;
     double cantidad;
     double precio;

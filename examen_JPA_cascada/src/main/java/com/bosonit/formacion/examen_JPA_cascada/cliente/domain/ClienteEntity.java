@@ -1,6 +1,6 @@
 package com.bosonit.formacion.examen_JPA_cascada.cliente.domain;
 
-import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.Factura;
+import com.bosonit.formacion.examen_JPA_cascada.cabecerafa.domain.FacturaEntity;
 import com.bosonit.formacion.examen_JPA_cascada.cliente.controller.dto.ClienteInputDto;
 import com.bosonit.formacion.examen_JPA_cascada.cliente.controller.dto.ClienteOutputDto;
 import jakarta.persistence.*;
@@ -16,16 +16,16 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Cliente {
+public class ClienteEntity {
     @Id
     @GeneratedValue
     Integer id;
     @Column(nullable = false, length = 100)
     String nombre;
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE)
-    Set<Factura> facturas;
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    Set<FacturaEntity> facturas;
 
-    public Cliente(ClienteInputDto clienteInputDto){
+    public ClienteEntity(ClienteInputDto clienteInputDto){
         this.id = clienteInputDto.getId();
         this.nombre = clienteInputDto.getNombre();
     }

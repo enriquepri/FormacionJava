@@ -4,6 +4,8 @@
 
 Conjunto de Ejercicios de la formación de backend con Java y Spring de Bosonit
 
+Todos los ejercicios están realizados utilizando el IDE IntelliJ y algunos de los archivos guardados contienen archivos de configuración del mismo.
+
 Dentro de la carpeta de cada ejercicio podemos encontrar:
 
 - Archivo formato Markdown con descripción del ejercicio

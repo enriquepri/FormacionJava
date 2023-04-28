@@ -9,7 +9,7 @@ Todos los ejercicios están realizados utilizando el IDE IntelliJ y algunos de l
 Dentro de la carpeta de cada ejercicio podemos encontrar:
 
 - Archivo formato Markdown con descripción del ejercicio
-- Código fuente del ejercicio
+- Código fuente del ejercicio. La mayoría desarrollados a partir de un proyecto generado con [spring initializr](https://start.spring.io/)
 - Archivos extra que puedan ser útiles/necesario (Run configuration de IntelliJ, Archivos de colecciones de Postman etc) 
 
 ### Bloques vistos

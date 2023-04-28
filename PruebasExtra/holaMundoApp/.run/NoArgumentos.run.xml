@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="NoArgumentos" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.training.holaMundoApp.HolaMundoAppApplication" />
+    <module name="holaMundoApp" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

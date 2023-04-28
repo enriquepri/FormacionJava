@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Argumentos" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.training.holaMundoApp.HolaMundoAppApplication" />
+    <module name="holaMundoApp" />
+    <option name="PROGRAM_PARAMETERS" value="hola aplicacion spring" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

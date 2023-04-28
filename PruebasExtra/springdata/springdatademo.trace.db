@@ -1,0 +1,8 @@
+2023-03-14 13:58:57 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]GET * STUDENT"; se esperaba "GRANT"
+Syntax error in SQL statement "[*]GET * STUDENT"; expected "GRANT"; SQL statement:
+GET * STUDENT [42001-214]
+2023-03-14 13:59:03 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "[*]GET * FROM STUDENT"; se esperaba "GRANT"
+Syntax error in SQL statement "[*]GET * FROM STUDENT"; expected "GRANT"; SQL statement:
+GET * FROM STUDENT [42001-214]

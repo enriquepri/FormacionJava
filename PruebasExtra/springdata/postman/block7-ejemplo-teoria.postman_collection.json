@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "ccbe6c6d-c963-4aa4-8754-4be394e51dc4",
+		"name": "block7-ejemplo-teoria",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PrimerPrograma",
+			"item": [
+				{
+					"name": "Student",
+					"item": [
+						{
+							"name": "getStudentById",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/student/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"student",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "postStudent",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"nombreEjemplo\",\r\n    \"lastName\": \"apellidoEjemplo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/student",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"student"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "putStudent",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"name\": \"nombreModificado\",\r\n    \"lastName\": \"apellidoModificado\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/student",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"student"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteStudentByID",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/student?id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"student"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "StudentDetails",
+					"item": [
+						{
+							"name": "addStudentDetails",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"student_id\": 1,\r\n    \"address\": \"calle ejemplo 1\",\r\n    \"phone_number\": \"telefono1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/details",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"details"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteDetailsById",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/details/1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"details",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "School",
+					"item": [
+						{
+							"name": "AddSchool",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Santisima Trinidad\",\r\n    \"address\": \"No Me Acuerdo Street\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8080/school",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"school"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddStudentToSchool",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/school/student?school_id=1&student_id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"school",
+										"student"
+									],
+									"query": [
+										{
+											"key": "school_id",
+											"value": "1"
+										},
+										{
+											"key": "student_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetAllStudents",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/school/getStudents?school_id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"school",
+										"getStudents"
+									],
+									"query": [
+										{
+											"key": "school_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "GetDtos",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/school/getDtos?school_id=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"school",
+										"getDtos"
+									],
+									"query": [
+										{
+											"key": "school_id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

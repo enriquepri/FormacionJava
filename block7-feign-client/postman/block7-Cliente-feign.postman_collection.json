@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "c104a8c9-72e3-4aa3-8cb8-7172cb80c5a1",
+		"name": "block7-Cliente-feign",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GetProfesor",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8081/feign/profesor/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"feign",
+						"profesor",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProfesor",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_persona\": 1,\r\n    \"comments\": \"Sin comentarios\",\r\n    \"branch\": \"NoEnd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/feign/profesor",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"feign",
+						"profesor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AddProfesorVacio",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_persona\": 1,\r\n    \"comments\": \"Sin comentarios\",\r\n    \"branch\": \"NoEnd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/feign/profesorVacio",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"feign",
+						"profesorVacio"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PutProfesor",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 1,\r\n    \"id_persona\": 1,\r\n    \"comments\": \"Nuevo COmentario\",\r\n    \"branch\": \"SiEnd\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8081/feign/profesor/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"feign",
+						"profesor",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

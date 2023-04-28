@@ -1,0 +1,16 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="ApplicationSiArgumentos" type="Application" factoryName="Application">
+    <option name="MAIN_CLASS_NAME" value="com.bosonit.formacion.block5commandlinerunner.Block5CommandLineRunnerApplication" />
+    <module name="block5-command-line-runner" />
+    <option name="PROGRAM_PARAMETERS" value="Spring Con Argumentos" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.bosonit.formacion.block5commandlinerunner.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>
